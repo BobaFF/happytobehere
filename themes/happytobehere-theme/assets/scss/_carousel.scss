@@ -1,0 +1,1034 @@
+//Carosello viaggi
+@mixin hover-focus() {
+    &:hover,
+    &:focus {
+      @content;
+    }
+  }
+$section-pt: 5rem;
+$section-pb: 4rem;
+section {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    @include pt($section-pt);
+    @include pb($section-pb);
+    @include pl($home-section-pl);
+    display: flex;
+    @include media-breakpoint-down(sm) {
+        @include py(3.5rem);
+    }
+    @include media-breakpoint-down(xs) {
+        @include pl($home-section-pl-xs);
+    }
+    &:not(:first-of-type) {
+        border-top: #{$home-section-border-width} solid $white;
+    }
+    &:not(:last-of-type) {
+        border-bottom: #{$home-section-border-width} solid $white;
+    }
+    .carousel-cont {
+        .pagination-default {
+            /*NB: sotto 768 la navigazione è diabilitata! */
+            //width: calc(100vw - (#{$home-section-border-width} * 2));
+            //left: calc(100% - 100vw + (#{$home-section-border-width} * 2));
+            @include media-breakpoint-up(lg) {
+                //width: calc(50vw - #{$scrollbar-rail-width} - #{$home-section-border-width});
+                //left: calc(0px - #{$home-section-pl});
+            }
+            @media (min-width: $high-res) {
+                //left: calc(#{$home-section-container-max-width} - (50vw - #{$home-section-border-width}));
+            }
+        }
+        .owl-carousel-cont {
+            //width: calc(100% + #{$owl-carousel-cont-pl});
+        }
+    }
+}
+section {
+    background-color: $gray-warm;
+    // Box + o - quadrati sotto $high-res
+    min-height: 815px; // risultato della regola sotto per $high-res
+    @media (max-width: $high-res) {
+        min-height: calc(50vw - (#{$grid-gutter-width} / 2));
+    }
+    //
+    .section-container {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+    }
+    &.content-home-section {
+        .section-content {
+            .title {
+                font-family: "Rubik", Roboto, sans-serif;
+                font-size: 1.6rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: black;
+            }
+        }
+        &[class*="gradient-"] {
+            .title {
+                color: $black;
+            }
+            p {
+                color: $black;
+            }
+            a {
+                &.read-more {
+                    color: $white;
+                    border: 1px solid $white;
+                    &:hover {
+                        color: $white;
+                        border: 1px solid $white;
+                    }
+                }
+            }
+            &.gradient-1 {
+                .title {
+                    color: $white;
+                }
+            }
+        }
+    }
+    &#search-home-section {
+        align-items: center;
+        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        @include pb(5rem);
+        @include media-breakpoint-up(lg) {
+            justify-content: center;
+            min-height: $img-home-section-lg-height;
+        }
+        @include media-breakpoint-only(lg) {
+            @include px(3rem);
+        }
+        @include media-breakpoint-down(md) {
+            @include pr(5rem);
+            @include py(0);
+            min-height: $search-home-section-tablet-height;
+            border: none;
+            margin-bottom: $home-section-border-width;
+        }
+        @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+            min-height: $search-home-section-mobile-height;
+        }
+        @include media-breakpoint-down(xs) {
+            @include px(13vw);
+        }
+        .section-container {
+            width: 100%;
+            @include media-breakpoint-down(md) {
+                flex: 2;
+            }
+        }
+        .section-content {
+            @include media-breakpoint-down(md) {
+                flex: 2;
+                display: flex;
+                flex-direction: row;
+                .row {
+                    flex: 2;
+                    display: flex;
+                    justify-content: center;
+                    .col {
+                        display: flex;
+                        .texts {
+                            flex-grow: 2;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            @include pb(3.8rem);
+                        }
+                    }
+                }
+            }
+            .title {
+                @include display-xl;
+            }
+            .text {
+                @include testo-grande;
+                max-width: $search-home-btn-max-width;
+                @include media-breakpoint-down(xl) {
+                    max-width: $search-home-btn-max-width-xl;
+                }
+                @include media-breakpoint-down(md) {
+                    font-size: 1.3rem;
+                    font-weight: 400;
+                }
+                @include media-breakpoint-up(lg) {
+                    @include mt(4);
+                }
+            }
+        }
+        .search-home-section-inner-cont {
+            @include media-breakpoint-down(md) {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        #mob-home-scroll-down {
+            position: absolute;
+            bottom: 18px;
+            right: 30px;
+        }
+    }
+
+    &:not(:first-child) {
+        .section-container {
+            width: 100%;
+        }
+        .section-content {
+            @include media-breakpoint-down(ms) {
+                @include pr(8rem);
+            }
+            @include media-breakpoint-down(xs) {
+                @include pr($home-section-pl-xs);
+            }
+        }
+        @media (min-width: $high-res), (min-width: $home-section-md-flex-end-min-width) and (max-width: $md-ceil) {
+            justify-content: flex-end;
+            .section-container {
+                width: $home-section-container-max-width;
+            }
+        }
+        @include media-breakpoint-down(md) {
+            border-left: #{$home-section-border-width} solid $white;
+            border-right: #{$home-section-border-width} solid $white;
+        }
+    }
+    &.home-newsletter {
+        .section-container {
+            justify-content: center;
+        }
+        .form-base-testo {
+            display: none;
+        }
+        .form-base-radio-option-privacy {
+            display: none;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            height: $form-input-height;
+            max-width: 444px;
+        }
+        input::placeholder {
+            font-weight: 300;
+        }
+        a.privacy-link {
+            @include link;
+        }
+        .form-base-button {
+            input[type="submit"] {
+                background-color: $primary;
+                color: #000;
+                text-transform: uppercase;
+                font-weight: 400;
+                border: none;
+                letter-spacing: 0.05rem;
+                padding: 0.6rem 1.5rem;
+                height: $form-input-height;
+                width: 260px;
+            }
+        }
+    }
+}
+
+.carousel {
+    position: relative;
+  }
+  .carousel.pointer-event {
+    touch-action: pan-y;
+  }
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    @include clearfix();
+  }
+  .carousel-item {
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    backface-visibility: hidden;
+    @include transition($carousel-transition);
+  }
+  .carousel-item.active,
+  .carousel-item-next,
+  .carousel-item-prev {
+    display: block;
+  }
+  .carousel-item-next:not(.carousel-item-left),
+  .active.carousel-item-right {
+    transform: translateX(100%);
+  }
+  .carousel-item-prev:not(.carousel-item-right),
+  .active.carousel-item-left {
+    transform: translateX(-100%);
+  }
+  //
+  // Alternate transitions
+  //
+  .carousel-fade {
+    .carousel-item {
+      opacity: 0;
+      transition-property: opacity;
+      transform: none;
+    }
+    .carousel-item.active,
+    .carousel-item-next.carousel-item-left,
+    .carousel-item-prev.carousel-item-right {
+      z-index: 1;
+      opacity: 1;
+    }
+    .active.carousel-item-left,
+    .active.carousel-item-right {
+      z-index: 0;
+      opacity: 0;
+      @include transition(opacity 0s $carousel-transition-duration);
+    }
+  }
+  //
+  // Left/right controls for nav
+  //
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    // Use flex for alignment (1-3)
+    display: flex; // 1. allow flex styles
+    align-items: center; // 2. vertically center contents
+    justify-content: center; // 3. horizontally center contents
+    width: $carousel-control-width;
+    color: $carousel-control-color;
+    text-align: center;
+    opacity: $carousel-control-opacity;
+    @include transition($carousel-control-transition);
+    // Hover/focus state
+    @include hover-focus() {
+      color: $carousel-control-color;
+      text-decoration: none;
+      outline: 0;
+      opacity: $carousel-control-hover-opacity;
+    }
+  }
+  .carousel-control-prev {
+    left: 0;
+    @if $enable-gradients {
+      background-image: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    }
+  }
+  .carousel-control-next {
+    right: 0;
+    @if $enable-gradients {
+      background-image: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    }
+  }
+  // Icons for within
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    display: inline-block;
+    width: $carousel-control-icon-width;
+    height: $carousel-control-icon-width;
+    background: 50% / 100% 100% no-repeat;
+  }
+  .carousel-control-prev-icon {
+    background-image: escape-svg($carousel-control-prev-icon-bg);
+  }
+  .carousel-control-next-icon {
+    background-image: escape-svg($carousel-control-next-icon-bg);
+  }
+  // Optional indicator pips
+  //
+  // Add an ordered list with the following class and add a list item for each
+  // slide your carousel holds.
+  .carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    padding-left: 0; // override <ol> default
+    // Use the .carousel-control's width as margin so we don't overlay those
+    margin-right: $carousel-control-width;
+    margin-left: $carousel-control-width;
+    list-style: none;
+    li {
+      box-sizing: content-box;
+      flex: 0 1 auto;
+      width: $carousel-indicator-width;
+      height: $carousel-indicator-height;
+      margin-right: $carousel-indicator-spacer;
+      margin-left: $carousel-indicator-spacer;
+      text-indent: -999px;
+      cursor: pointer;
+      background-color: $carousel-indicator-active-bg;
+      background-clip: padding-box;
+      // Use transparent borders to increase the hit area by 10px on top and bottom.
+      border-top: $carousel-indicator-hit-area-height solid transparent;
+      border-bottom: $carousel-indicator-hit-area-height solid transparent;
+      opacity: .5;
+      @include transition($carousel-indicator-transition);
+    }
+    .active {
+      opacity: 1;
+    }
+  }
+  // Optional captions
+  //
+  //
+  .carousel-caption {
+    position: absolute;
+    right: (100% - $carousel-caption-width) / 2;
+    bottom: 20px;
+    left: (100% - $carousel-caption-width) / 2;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: $carousel-caption-color;
+    text-align: center;
+  }
+
+  .owl-carousel{
+    .owl-stage {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-box;
+      display: flex;
+    }
+    .owl-stage-outer{
+      overflow: inherit;
+    }
+    &.photo-carousel{
+      height: $mob-trip-gallery-height;
+      overflow: hidden;
+      .item{
+        height: 100%;
+        width: auto;
+        float: left;
+        + .item {
+          display: block;
+        }
+        img{
+          height: 100%;
+        }
+      }
+      .owl-stage-outer{
+        overflow: hidden;
+        height: 100%;
+        .owl-stage{
+          height: 100%;
+          .owl-item{
+            height: 100%;
+            .item{
+              img{
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+                @include media-breakpoint-between(md,lg){
+                    width: auto;
+                    object-fit:inherit;
+                    object-position: inherit;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.mobile-home-carousel,
+    &.photo-carousel,
+    &.curtain-carousel {        // eventualmente fare mixin col codice riguardante i dots
+      .owl-dots {
+        text-align: center;
+        position: absolute;
+        bottom: 1rem;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        .owl-dot {
+          display: inline-block;
+          margin-left: .2rem;
+          margin-right: .2rem;
+          height: .42rem;
+          width: .42rem;
+          border-radius: 50px;
+          span{
+            display: block;
+            height: 100%;
+            width: 100%;
+            border-radius: .42rem;
+            background-color: rgba($white, .6);
+            transition: transform .5s ease, background-color .7s ease;
+          }
+          &.active{
+            span{
+              background-color:rgba($white, 1);
+              transform: scale(1);
+            }
+          }
+          &:first-child,
+          &:last-child{
+              transform: scale(.7);
+              transition: transform .5s ease;
+              &.active{
+                  transform: scale(1);
+              }
+          }
+        }
+      }
+    }
+  }
+  //
+  // PAGINATION
+  //
+  .pagination{
+      .previous{
+          margin-left: -1rem !important;
+          opacity: 0;
+          transition: margin-left .6s ease, opacity .6s ease;
+          &.visible{
+              margin-left: 0 !important;
+              opacity: 1;
+          }
+      }
+      .next{
+          margin-left: inherit;
+          opacity: 1;
+          transition: margin-left .6s ease, opacity .6s ease;
+          &.not-visible{
+              margin-left: -1rem;
+              opacity: 0;
+          }
+      }
+      .page-number{
+          opacity: 1;
+          margin-left: inherit;
+          transition: all .6s ease;
+          &.not-visible{
+              opacity:0;
+              margin-left: -1.2rem;
+          }
+      }
+      .hide-more-page-prev,
+      .hide-more-page-next{
+          opacity: 1;
+          margin-left: inherit;
+          transition: margin-left .6s ease, opacity .6s ease;
+          &.not-visible{
+              opacity:0;
+              margin-left: -.7rem;
+          }
+      }
+  }
+  .carousel {     // NB: è assegnata alla sezione => occhio agli stili comuni tra home e interni
+      position: relative;
+      z-index: 1; // serve per evitare sovrapposizione delle frecce dello slideshow alla barra cta del viaggio
+  /*    @include media-breakpoint-up(lg){
+        // A cosa servivano?
+          &:after{
+              content: ' ';
+              display: block;
+              position: absolute;
+              width: 100vw;
+              height: calc(100% + 2rem);
+              top: -2rem;
+              left: calc(100% - #{$scrollbar-rail-width});
+              background-color: $gray-100;
+              z-index: 1;
+          }
+          &#related{
+              &:after{
+                  background-color: $white;
+              }
+          }
+      }
+  */
+      &:not(.carousel-generic-curtain) {
+        .carousel-par:not(:last-of-type) {
+          .owl-stage {
+            @include pb(5);
+            @include mb(5);
+            border-bottom: 1px solid $gray-300;
+          }
+        }
+      }
+      .owl-carousel-item {   // NB: l'ho chiamata owl-carousel-item perché carousel-item è una classe già usata da bootstrap
+        display: block;
+        position: relative;
+        @include box-shadow;
+        overflow: hidden;
+        color: inherit;
+        width: $carousel-item-std-width;
+        background-color: $white;
+        + .owl-carousel-item {
+          display: none !important;        // nascosti al caricamento pagina
+        }
+      }
+      .item-img-cont {
+        position: relative;
+        .item-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+      .item-overlay {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        z-index: 1;
+        transition: opacity .7s ease;
+        .travels-box {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          color: $white;
+          font-weight: 500;
+          letter-spacing: .02rem;
+          @include px(3);
+          @include pb(2);
+          @include m(0);
+        }
+        .counter{
+          @include display-large;
+        }
+      }
+      .item-texts {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+      }
+  }
+  .carousel-cont {
+      position: relative;
+      .pagination-default {
+          position: absolute;
+          top: $carousel-pagination-top;
+          transform: translateY(-50%);
+          z-index: 3;
+          pointer-events: none;
+          @include media-breakpoint-down(sm){
+            display: none;
+          }
+          @include media-breakpoint-up(md) {
+              //width:  calc( 100vw );
+              //left: calc( ( #{$cont-max-width-md} - #{$grid-gutter-width} - 100vw) /2 );
+          }
+          /* NB: le vw dipendono dalla larghezza della colonna, se viene modificata vanno modificate */
+          @include media-breakpoint-up(lg) {
+              //width: calc(58.33333vw - #{$scrollbar-rail-width});
+              //left: -$grid-gutter-width/2;
+              //left: calc( ( -58.33333vw + ( #{$main-section-cont-lg-max-width} - #{$grid-gutter-width} ) ) /2 );
+          }
+          @include media-breakpoint-up(xl) {
+              //left: calc( ( -58.33333vw + ( #{$main-section-cont-xl-max-width} - #{$grid-gutter-width} ) ) /2 );
+          }
+          @include media-breakpoint-up(xxl) {
+              //width: calc( 50vw - #{$scrollbar-rail-width} );
+              //left: calc( ( -50vw + ( #{$main-section-cont-xxl-max-width} - #{$grid-gutter-width} ) ) /2 );
+          }
+          button{
+              opacity: 1;
+              transform: translateX(0);
+              transition: opacity 1.2s ease, transform .7s ease;
+              pointer-events: all;
+              &.owl-prev{
+                  float:left;
+                  i{
+                      font-size: inherit;
+                  }
+                  &.disabled{
+                      opacity: 0;
+                      transform: translateX(-100%);
+                  }
+              }
+              &.owl-next{
+                  float: right;
+                  i{
+                      font-size: inherit;
+                  }
+                  &.disabled{
+                      opacity: 0;
+                      transform: translateX(100%);
+                  }
+              }
+          }
+      }
+      .owl-carousel-cont {
+          overflow-x: clip;
+          padding-left: $owl-carousel-cont-pl;
+          margin-left: -$owl-carousel-cont-pl;
+          padding-top: 1.5rem;
+          width: calc( 100vw - ( #{$grid-gutter-width} / 2 ) + #{$owl-carousel-cont-pl} );
+          @include media-breakpoint-up(sm) {
+            width: calc( 50vw + ( ( #{$cont-max-width-sm} - #{$grid-gutter-width} ) / 2 )  + #{$owl-carousel-cont-pl} ); // viene da: cont-max-width + (100vw - cont-max-width)/2 + padding-left
+          }
+          @include media-breakpoint-up(md) {
+              width: calc( 50vw + ( ( #{$cont-max-width-md} - #{$grid-gutter-width} ) / 2 )  + #{$owl-carousel-cont-pl} ); // viene da: cont-max-width + (100vw - cont-max-width)/2 + padding-left
+          }
+          @include media-breakpoint-up(lg) {
+              width: calc( 50% + ( 58.33333vw / 2 ) + #{$owl-carousel-cont-pl} ); // viene da: 100% + (58.33333vw - 100%)/2 + padding-left
+          }
+          @include media-breakpoint-up(xl) {
+              width: calc( 50% + ( 58.33333vw / 2 ) + #{$owl-carousel-cont-pl} ); // viene da: 100% + (58.33333vw - 100%)/2 + padding-left
+          }
+          @include media-breakpoint-up(xxl) {
+              width: calc( 50% + 25vw + #{$owl-carousel-cont-pl} ); // viene da: 100% + (50vw - 100%)/2 + padding-left
+          }
+      }
+      .owl-carousel {
+          margin-bottom: 1rem;
+          @include media-breakpoint-up(lg) {
+              width: calc( #{$main-section-cont-xl-max-width} - #{$grid-gutter-width} );
+          }
+          @include media-breakpoint-up(xl) {
+              width: calc( #{$main-section-cont-xl-max-width} - #{$grid-gutter-width} );
+          }
+          @include media-breakpoint-up(xxl) {
+              width: calc( #{$main-section-cont-xxl-max-width} - #{$grid-gutter-width} );
+          }
+      }
+  }
+  //
+  // CAROUSEL EXTENDED
+  //
+  .carousel.carousel-extended {
+    .pagination-default {
+        top: 184px;
+        &.not-extended {    // annulla la regola sopra per i caroselli viaggi in landing istituzionali // TO DO: fare in maniera migliore differenziando le classi della sezione nel template
+            top: $carousel-pagination-top;
+        }
+    }
+    .item-extended {
+        height: 388px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+            width: 262px;    // NB: moltiplico tutte le misure desktop per 1.12
+            height: 435px;
+        }
+        .item-img-cont {
+            height: 165px;
+            border-bottom: 1px solid $gray-400;
+            flex-shrink: 0;
+            @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+                height: 185px;
+            }
+        }
+        .item-texts {
+            @include pb(3);
+            @include pt(4);
+            @include px(3);
+            justify-content: space-between;
+            .features{
+                padding: 0 1.4rem 0 .1rem;
+                li,
+                .feature{
+                    &:before{
+                        content: '·';
+                        display: inline-block;
+                        margin-right: .5rem;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+        .item-texts-title{
+            position: relative;
+            width: 100%;
+            opacity: 1;
+            z-index: 2;
+            h6 {
+                line-height: $line-height-lg;
+                width: 100%;
+                color: $black;
+                font-weight: 500;
+                z-index: 1;
+                @include mb(0);
+            }
+        }
+        .item-texts-content {
+            @include mt(.5rem);
+            max-height: 130px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+                max-height: 146px;
+            }
+        }
+        /*&:hover{
+            img{
+                transform: translateY(-5px);
+            }
+        }*/
+      }
+      .boats-carousel-ext {
+        .item-texts-content {
+            max-height: 108px;  /* TO DO: verificare */
+            @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+                max-height: 121px;
+            }
+        }
+      }
+      .paragraphs-block {
+          .item-extended {
+              margin-bottom: 20px;
+          }
+      }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+}
+
+
+  //
+  // ITEM - GENERIC
+  //
+  
+.item-generic {
+    margin-right: 1rem;
+    height: 165px;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+    
+    .item {
+        height: 100%;
+    }
+    
+    .item-img {
+        object-fit: cover;   
+        height: 100%;
+    }
+
+    .item-name {
+        position: absolute;
+        height: 100%;
+        width:100%;
+        bottom: 0;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity .7s ease;
+
+        h6{
+            position: absolute;
+            bottom: 0;
+            color: $white;
+            font-weight: 500;
+            @include py(.75rem);
+            @include px(3);
+        }
+
+        &:before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: $white;
+            background-color: rgba($black, .5);
+            transform: translateY(100%);
+
+            transition: transform .6s ease;
+        }
+    }
+
+    &:hover {
+        .item-name{
+            opacity: 1;
+
+            &:before{
+            transform: translateY(0);
+            }
+        }
+    }
+
+    &:active{
+        background-color: $white;
+    }
+
+    &.item-generic-curtain {
+        cursor: pointer;
+    }
+}
+
+.paragraphs-block {
+    .item-generic {
+        margin-bottom: 20px;
+    }
+}
+  .bicycles-carousel {
+    .item-img {
+        @include p(2);
+    }
+  }
+  //
+  // VARIANTS
+  //
+  .travel-variants {
+    overflow: hidden;
+}
+  //
+  // RELATED
+  //
+  #left-content {
+    .related{
+        overflow: hidden;
+      
+        h4{
+          margin-bottom: 0;
+          @include titoletto-serif;
+        }
+      
+        .view-gallery{
+          margin-left: .6rem;
+          font-weight: 400;
+          font-style: italic;
+          text-transform: lowercase;
+        }
+      
+        .pagination-default {
+          top: 51%;
+        }
+      
+        .related-carousel{
+      
+            .item-related {
+                margin-right: 1rem;
+                height: 15rem;
+                width: 230px;
+                height: 230px;
+            
+                &:last-of-type{
+                  margin-right: 0;
+                }
+                
+                .item-img-cont {
+                    width: 100%;
+                    height: 100%;
+                }
+            
+                .item-overlay {
+            
+                  h5 {
+                    position: absolute;
+                    top: 0;
+                    color: $white;
+                    @include display-small;
+                    @include p(3);
+                    @include pt(4);
+                  }
+            
+                  &:before{
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    color: $white;
+                    background-color: rgba($black, .25);
+                    transform: translateY(0);
+            
+                    transition: transform .6s ease;
+                  }
+                }
+            
+                &:hover{
+            
+                  .item-overlay {
+                    opacity: 0;
+            
+                    &:before{
+                      transform: translateY(100%);
+                    }
+                  }
+                }
+            
+                &:active{
+                  background-color: $white;
+                }
+              }
+        }
+      }
+  }
+
+  section.home-carousel {
+    .pagination-default {
+        top: 133px; 
+    }
+    
+    .item-home {
+        height: 326px;
+        display: flex;
+        flex-direction: column;
+        
+         .item-home {
+            // nasconde gli item prima dell'attivazione del carosello
+            display: none;
+        }
+        
+        .item-img-cont {
+            height: 226px;
+        }
+        
+        .item-texts {
+            @include p(3);
+    
+            .item-texts-top {
+                @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+                    min-height: 72px;
+                }
+            }
+    
+            .title {
+                font-weight: 500;
+    
+                svg {
+                    margin-left: .5rem;
+                }
+            }
+        }
+    
+        &.see-all {
+            background: $mango;
+            color: white;
+        }
+    }
+    
+    .owl-item {
+        .item-home {
+            + .item-home {
+                // mostra gli item dopo l'attivazione del carosello
+                display: flex;
+            }
+        }
+    }
+}

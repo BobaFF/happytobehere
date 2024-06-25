@@ -1,0 +1,144 @@
+{% macro tags_loop(array_tags, limit = 0) %}
+	{% if array_tags %}
+	{% set i = 0 %}
+		<ul class="tags d-inline-flex justify-content-start flex-wrap">
+			{% for tag in array_tags %}
+				{% if i < limit or limit == 0 %}
+				<li>
+					<a href="{{site.url}}/tag/{{tag.slug}}">{{tag.title}}</a>
+				</li>
+				{% endif %}
+				{% set i = i + 1 %}
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endmacro tags_loop %}
+
+{% macro about_menu(array_menu) %}
+	{% if array_menu %}
+		<ul class="nav">
+			{% for item in array_menu.items %}
+				{% if not item.current %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{item.url}}">{{item.title}}</a>
+					{% else %}
+						<li class="nav-item">
+							<span class="nav-link current">{{item.title}}</span>
+						{% endif %}
+					{% if not loop.last %}
+						{#<span>/</span>#}
+					{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endmacro about_menu %}
+
+	{% macro category_menu(array_menu) %}
+		{% if array_menu %}
+			<ul class="nav justify-content-start flex-wrap">
+				{% for item in array_menu.items %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{item.url}}">{{item.title}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endmacro category_menu %}
+
+		{% macro social_buttons() %}
+			{#privacy policy??#}
+			{% set socials = ['facebook', 'instagram', 'youtube'] %}
+			{% set links = {'facebook': 'https://www.facebook.com/Girolibero', 'instagram':'https://www.instagram.com/girolibero/', 'youtube':'https://www.youtube.com/user/Giroliberoit'} %}
+			<ul class="d-flex social-links justify-content-start">
+				{% for social in socials %}
+					<li>
+						<a target="_blank" rel="noopener" href="{{ links[social] }}" aria-label="Link al profilo social {{social}}">
+							<i class="icon-{{social}}"></i>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endmacro social_buttons %}
+
+		{% macro small_posts(array_post, limit = 10, direction = "row") %}
+			{% set dir = {'row': 'flex-row', 'column':'flex-column'}%}
+			{% set i = 0 %}
+			<div class="d-flex flex-wrap {{ dir[direction] }} justify-content-between">
+			{% for post in array_post %}
+				{% if i < limit %}
+					<div class="d-inline-flex small-post-item">
+					<a class="small-thumbnail" aria-label="Leggi l'articolo" href="{{site.url}}/{{post.terms('category')[0] |replace({' ': "-"})}}/{{post.slug}}">
+						<img src="{{post.thumbnail}}">
+					</a>
+					<div>
+						<time datetime="{{ post.date('Y-m-d H:i:s') }}">{{ post.date }}</time>
+					<h3>
+						<a href="{{site.url}}/{{post.terms('category')[0] |replace({' ': "-"})}}/{{post.slug}}">
+							{{post.title}}
+						</a>
+					</h3>
+					</div>
+					</div>
+
+
+					{% set i = i + 1 %}
+				{% endif %}
+			{% endfor %}
+			</div>
+		{% endmacro small_posts %}
+
+		{% macro post_item(post, term_name, excerpt_limit = 25) %}
+			<a class="thumbnail" href="{{site.url}}/{{post.terms('category')[0] |replace({' ': "-"})}}/{{post.slug}}">
+				<p>
+					{% if post.terms({taxonomy: 'category'})|length > 1%}
+					{{term_name is not null ? (term_name ~ " +") : (post.terms('category')[0] ~ " +")}}
+					{% else %}
+					{{post.category}}
+					{% endif %}
+				</p>
+				<img src="{{post.thumbnail}}"  loading="lazy">
+				<div class="img-mask"></div>
+			</a>
+			<p class="date-author">{{ post.date}}
+				/
+				<a href="{{site.url}}/author/{{post.author.slug}}">{{ post.author}}</a>
+			</p>
+			<h3>
+				<a href="{{site.url}}/{{post.terms('category')[0] |replace({' ': "-"})}}/{{post.slug}}">
+					{{post.title}}
+				</a>
+			</h3>
+			<p class="excerpt">{{post.excerpt({ words: excerpt_limit, read_more: 'altro' })}}</p>
+			{{ _self.tags_loop( post.terms('tag') ) }}
+		{% endmacro post_item %}
+
+		{% macro posts_list(post, term_name = null, ended = false) %}
+		{% for post_i in post %}
+            <li class="col
+            {% if ended %} last_archive_posts {% endif %}
+            ">
+                <div class="d-flex flex-column h-100 container post-item">
+                {{_self.post_item(post_i, term_name)}}
+                </div>
+            </li>
+		{% endfor %}
+		{% endmacro %}
+
+		{% macro archive_post_map() %}
+		<li class="col">
+			<div class="d-flex flex-column h-100 container post-item">
+				<h3>Il Blog il mappa</h3>
+				<a href="{{site.url}}/il-blog-in-mappa"><img id="map-img" src="{{site.url}}/wp-content/themes/happytobehere-theme/assets/img/map.png"></a>
+			</div>
+		</li>
+		{% endmacro %}
+
+		{% macro insert_newsletter() %}
+		<li class="col" id="newsletter-container">
+                <div class="d-flex flex-column h-100 container" id="newsletter">
+                <h3>Newsletter</h3>
+                {{function('do_shortcode', '[mc4wp_form id=11666]')}}
+                </div>
+		</li>
+		{% endmacro %}

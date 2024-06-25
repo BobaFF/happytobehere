@@ -1,0 +1,1454 @@
+    /*
+// GIROLIBERO Webfonts
+*/
+
+/*
+// Rubik
+*/
+/*
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Light.eot');
+  src: url('../fonts/Rubik-Light.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Rubik-Light.woff2') format('woff2'),
+  url('../fonts/Rubik-Light.woff') format('woff'),
+  url('../fonts/Rubik-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Regular.eot');
+  src: url('../fonts/Rubik-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Rubik-Regular.woff2') format('woff2'),
+  url('../fonts/Rubik-Regular.woff') format('woff'),
+  url('../fonts/Rubik-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Medium.eot');
+  src: url('../fonts/Rubik-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Rubik-Medium.woff2') format('woff2'),
+  url('../fonts/Rubik-Medium.woff') format('woff'),
+  url('../fonts/Rubik-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+}
+*/
+/*
+// Minion Pro
+*/
+
+@font-face {
+  font-family: 'Minion Pro';
+  src: url('../fonts/MinionPro-Regular.eot');
+  src: url('../fonts/MinionPro-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/MinionPro-Regular.woff2') format('woff2'),
+  url('../fonts/MinionPro-Regular.woff') format('woff'),
+  url('../fonts/MinionPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/*
+// ICON SET
+*/
+
+@font-face {
+  font-family: 'Girolibero';
+  src:  url('../fonts/Girolibero-iconset.eot?6rroth');
+  src:  url('../fonts/Girolibero-iconset.eot?6rroth#iefix') format('embedded-opentype'),
+  url('../fonts/Girolibero-iconset.ttf?6rroth') format('truetype'),
+  url('../fonts/Girolibero-iconset.woff?6rroth') format('woff'),
+  url('../fonts/Girolibero-iconset.svg?6rroth#Girolibero-iconset') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Girolibero' !important;
+  speak: none;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  vertical-align: middle;
+  line-height: initial;
+
+  display: inline-block;
+  padding: .2235em .2145em;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@import '_charset.scss';
+
+[class*="icon-"]{
+    color: $gray-800;
+}
+
+.icon-availability{
+    display: inline-block;
+    padding: 1.131em 0.503em 1.1em;
+    color: $white;
+    font-size: 1rem;
+    line-height: 0;
+
+
+    &.available {
+      &:before {
+        content: $icon-available;
+        padding: .2em;
+        font-size: .8em;
+        vertical-align: .16em;
+
+        background-color: $orange;
+        box-shadow: 0 0 0 .3em rgba($orange, .3);
+        border-radius: 50%;
+      }
+    }
+
+    &.empty {
+      &:before {
+        content: $icon-empty;
+        padding: .26em .3em;
+        font-size: .8em;
+        vertical-align: .2em;
+
+        background-color: $green;
+        box-shadow: 0 0 0 .2rem rgba($green, .3);
+        border-radius: 50%;
+      }
+    }
+
+    &.full {
+
+      &:before {
+        content: $icon-full;
+        padding: .3em .4em;
+        font-size: .7em;
+        vertical-align: .22em;
+
+        background-color: $red;
+        box-shadow: 0 0 0 .2rem rgba($red, .3);
+        border-radius: 50%;
+      }
+    }
+}
+
+
+
+
+.icon-facebook {
+  font-size: 1rem;
+  &:before {
+    content: $icon-facebook;
+  }
+}
+.icon-instagram {
+  font-size: 1rem;
+  &:before {
+    content: $icon-instagram;
+  }
+}
+.icon-youtube {
+  font-size: 1rem;
+  &:before {
+    content: $icon-youtube;
+  }
+}
+.icon-banner {
+  color: $white;
+  font-size: 2rem;
+
+  &:before {
+    content: $icon-banner;
+  }
+}
+.icon-share {
+  color: $black;
+  font-size: 2rem;
+  padding: inherit;
+
+  &:before {
+    content: $icon-share;
+    display: inline-block;
+    padding:.143rem .0715em;
+  }
+
+
+}
+.icon-close {
+  &:before {
+    content: $icon-close;
+  }
+}
+
+.icon-close-circle {
+  width: 24px;
+  .icon-close-circle-cls-1{opacity:1;}
+  .icon-close-circle-cls-2{fill:#fff;}
+  .icon-close-circle-cls-3{fill:none;stroke:#454545;stroke-linecap:round;stroke-linejoin:round;stroke-width:.8px;}
+}
+
+.icon-close-black-circle {
+  width: 24px;
+  .icon-close-black-circle-cls-1{fill:#ff0;stroke-miterlimit:10;}
+  .icon-close-black-circle-cls-1,.icon-close-black-circle-cls-2{stroke:#1d1d1b;}
+  .icon-close-black-circle-cls-2{fill:#1d1d1b;}
+  .icon-close-black-circle-cls-2,.icon-close-black-circle-cls-3{stroke-linecap:round;stroke-linejoin:round;}
+  .icon-close-black-circle-cls-3{fill:none;stroke:#fff;stroke-width:1.5px;}
+}
+
+.icon-carret {
+  font-size: .8rem;
+  padding: .7rem;
+  &:before {
+    content: $icon-carret;
+  }
+}
+
+// Search
+.icon-search {
+  &:before {
+    content: $icon-search;
+  }
+
+  &.search-btn{
+      display: inline-block;
+      text-align: center;
+      color: $white;
+      background-color: $black;
+      font-weight: 900;
+      font-size: 1.3rem;
+      padding: .3rem;
+  }
+
+  &.black{
+      color: $white;
+      background-color: $black;
+  }
+}
+
+// Arrow
+
+.icon-arrow-up {
+  &:before {
+    content: $icon-arrow-up;
+  }
+}
+
+.icon-arrow-right {
+  &:before {
+    content: $icon-arrow-right;
+  }
+}
+
+.icon-arrow-down{
+    &:before{
+        content: $icon-arrow-down;
+    }
+}
+
+.icon-arrow-left{
+    &:before{
+        content: $icon-arrow-left;
+    }
+}
+
+@mixin indicator-xl {
+  display: inline-block;
+  padding: .643em;
+  color: $black;
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  background-color: $primary;
+}
+
+[class*="icon-arrow-"]{
+    &.indicator{
+         display: inline-block;
+         padding: .8em 0.503em 1.105em;
+         font-size: 1.2rem;
+         line-height: 0;
+
+        &:before{
+            color: $black;
+            font-size: .4em;
+            font-weight: 900;
+            text-align: center;
+            padding: .38rem;
+            background-color: $primary;
+        }
+    }
+
+    &.indicator-xl{
+      @include indicator-xl;
+    }
+
+    &.indicator-medium {
+      font-size: .85em;
+    }
+
+    &.indicator-transp-bg {
+      background-color: transparent;
+    }
+}
+
+// arrow white circle
+.icon-arrow-left-circle {     
+	.icon-arrow-left-circle-st0{opacity:0.7;}
+	.icon-arrow-left-circle-st1{fill:#FFFFFF;}
+	.icon-arrow-left-circle-st2{fill:none;stroke:#454545;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;}
+  width: 25px;
+}
+
+.icon-arrow-right-circle {   
+  .icon-arrow-right-circle-cls-1{opacity:0.7;}
+  .icon-arrow-right-circle-cls-2{fill:#fff;}
+  .icon-arrow-right-circle-cls-3{fill:none;stroke:#454545;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.2px;}
+  width: 25px;
+}
+
+.icon-arrow-right-border-circle {   // non più usata perché sostituita da .icon-arrow-right-border che usa l'svg
+  @include indicator-xl;
+  border: 1px solid;
+  border-radius: 100%;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  line-height: 1.35rem;
+
+  &:before {
+    content: $icon-arrow-right;
+    padding-left: 1px;
+  }
+  
+  @include media-breakpoint-down(ms) {
+    height: 1.25rem;
+    width: 1.25rem;
+    line-height: 1.15rem;
+    font-size: 0.5rem;
+  }
+}
+
+.icon-arrow-right-border {  // è la stessa icona .icon-arrow-right-border-circle ma fatta con svg
+  width: 1.8rem;
+  flex-shrink: 0;   // serve quando l'icona viene messa in contesti flex (es. barra fissa booking e viaggio), e nel mobile potrebbe rimpicciolirsi troppo
+  .icon-arrow-right-border-cls-1{fill:$primary;stroke-miterlimit:10;}
+  .icon-arrow-right-border-cls-1,.icon-arrow-right-border-cls-2{stroke:#1d1d1b;}
+  .icon-arrow-right-border-cls-2{fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  
+  circle {
+    stroke-width: 0px;
+  }
+}
+
+.icon-arrow-left-border {  // è la stessa icona .icon-arrow-right-border ruotata
+  transform: rotate(180deg);
+}
+
+//
+
+.icon-return {
+  color: $black;
+  font-size: 1rem;
+
+  &:before {
+    content: $icon-return;
+  }
+}
+
+.icon-calendar {
+  &:before {
+    content: $icon-calendar;
+  }
+}
+.icon-tick {
+  &:before {
+    content: $icon-tick;
+  }
+}
+.icon-thumbnail {
+  &:before {
+    content: $icon-thumbnail;
+  }
+}
+.icon-favourite {
+  color: $black;
+  font-size: 2rem;
+  padding: inherit;
+
+  &:before {
+    content: $icon-favourite;
+    display: inline-block;
+    padding:.143rem .0715em;
+  }
+
+  &.artline{
+      &:before{
+        content: $icon-favourite-border;
+        font-weight: 900;
+      }
+  }
+
+  &.red{
+      color: $red;
+  }
+
+  &.gray{
+      color: $gray-300;
+  }
+}
+
+
+.icon-rating {
+  &:before {
+    content: $icon-rating;
+  }
+}
+.icon-info {
+  &:before {
+    content: $icon-info;
+  }
+}
+.icon-location {
+  &:before {
+    content: $icon-location;
+  }
+}
+.icon-phone {
+  &:before {
+    content: $icon-phone;
+  }
+}
+.icon-phone-chat {
+  font-size: 2em;
+  padding: .143rem .0715em;
+
+  &:before {
+    content: $icon-phone-chat;
+  }
+}
+.icon-support {
+  font-size: 1.8em;
+  padding: .15em .136em .1em;
+
+  &:before {
+    content: $icon-support;
+  }
+}
+.icon-advice {
+  &:before {
+    content: $icon-advice;
+  }
+}
+.icon-howtobook {
+  font-size: 1.8em;
+  padding: .15em .136em .1em;
+
+  &:before {
+    content: $icon-howtobook;
+  }
+}
+.icon-history {
+  &:before {
+    content: $icon-history;
+  }
+}
+.icon-luggage {
+  &:before {
+    content: $icon-luggage;
+  }
+}
+.icon-overnight-stay {
+  &:before {
+    content: $icon-overnight-stay;
+  }
+}
+.icon-insurance {
+  &:before {
+    content: $icon-insurance;
+  }
+}
+.icon-top-destination {
+  &:before {
+    content: $icon-top-destination;
+  }
+}
+.icon-bike-boat {
+  font-size: 2em;
+  padding: .16rem .06em .04em;
+  &:before {
+    content: $icon-bike-boat;
+  }
+}
+.icon-bike-family {
+  font-size: 2em;
+  padding: .16rem .06em .04em;
+  &:before {
+    content: $icon-bike-family;
+  }
+}
+.icon-bike-hotel {
+  font-size: 1.8em;
+  padding: .2rem .1em;
+  &:before {
+    content: $icon-bike-hotel;
+  }
+}
+.icon-boat {
+  &:before {
+    content: $icon-boat;
+  }
+}
+.icon-roadbike {
+  font-size: 1.8em;
+  padding: .2rem .1em;
+  &:before {
+    content: $icon-roadbike;
+  }
+}
+.icon-family {
+  &:before {
+    content: $icon-family;
+  }
+}
+.icon-indipendent {
+  &:before {
+    content: $icon-indipendent;
+  }
+}
+.icon-group {
+  &:before {
+    content: $icon-group;
+  }
+}
+.icon-mate {
+  &:before {
+    content: $icon-mate;
+  }
+}
+.icon-earth {
+  &:before {
+    content: $icon-earth;
+  }
+}
+.icon-earth-airplane {
+  font-size: 2.1em;
+  padding: .08rem;
+  &:before {
+    content: $icon-earth-airplane;
+  }
+}
+.icon-sail {
+  font-size: 2em;
+  padding: .15rem .08em .02em;
+
+  &:before {
+    content: $icon-sail;
+  }
+}
+.icon-cruise {
+  &:before {
+    content: $icon-cruise;
+  }
+}
+.icon-houseboat {
+  font-size: 2em;
+  padding: .2rem .08em .02em;
+
+  &:before {
+    content: $icon-houseboat;
+  }
+}
+.icon-party {
+  &:before {
+    content: $icon-party;
+  }
+}
+.icon-backpack {
+  &:before {
+    content: $icon-backpack;
+  }
+}
+.icon-itinerary-full {
+  font-size: 1.6rem;
+  padding: .2em;
+
+  &:before {
+    content: $icon-itinerary-full;
+  }
+
+  &.map-indicator{
+      display: inline-block;
+      padding: .344em .347em;
+      color: $black;
+      font-size: 1.35em;
+      font-weight: 300;
+      text-align: center;
+
+      background-color: $primary;
+  }
+}
+.icon-catalogue {
+  &:before {
+    content: $icon-catalogue;
+  }
+}
+.icon-contract {
+  font-size: 1.8em;
+  padding: .15em .136em .1em;
+
+  &:before {
+    content: $icon-contract;
+  }
+}
+.icon-data-sheet {
+  &:before {
+    content: $icon-data-sheet;
+  }
+}
+.icon-deepening {
+  &:before {
+    content: $icon-deepening;
+  }
+}
+.icon-howitworks {
+  &:before {
+    content: $icon-howitworks;
+  }
+}
+.icon-list {
+  &:before {
+    content: $icon-list;
+  }
+}
+.icon-map {
+  &:before {
+    content: $icon-map;
+  }
+}
+.icon-mountain-route {
+  font-size: 1.9em;
+  padding: .15rem;
+
+  &:before {
+    content: $icon-mountain-route;
+  }
+}
+.icon-newsletter {
+  font-size: 1.8em;
+  padding: .2rem .1em;
+  &:before {
+    content: $icon-newsletter;
+  }
+}
+.icon-other-topic {
+  &:before {
+    content: $icon-other-topic;
+  }
+}
+.icon-review {
+  &:before {
+    content: $icon-review;
+  }
+}
+.icon-price {
+  &:before {
+    content: $icon-price;
+  }
+}
+.icon-itinerary {
+  font-size: 1.6rem;
+  padding: .2em;
+
+  &:before {
+    content: $icon-itinerary;
+  }
+}
+.icon-sales {
+  &:before {
+    content: $icon-sales;
+  }
+}
+.icon-trekking {
+  &:before {
+    content: $icon-trekking;
+  }
+}
+.icon-worldtraveller {
+  &:before {
+    content: $icon-worldtraveller;
+  }
+}
+.icon-tailormade {
+  &:before {
+    content: $icon-tailormade;
+  }
+
+  &.indicator{
+      display: inline-block;
+      padding: .238em .145em .2385em .2em;
+      color: $black;
+      font-size: 1.7em;
+      font-weight: 300;
+      text-align: center;
+
+      background-color: $primary;
+  }
+}
+.icon-topic {
+  &:before {
+    content: $icon-topic;
+  }
+}
+
+.icon-pregroup {
+  &:before {
+    content: $icon-pregroup;
+  }
+  &.indicator{
+      display: inline-block;
+      padding: .238em .145em .2385em .2em;
+      color: $black;
+      font-size: 1.7em;
+      font-weight: 300;
+      text-align: center;
+
+      background-color: $primary;
+  }
+}
+
+.icon-girolibero {
+  &:before {
+    content: $icon-girolibero;
+  }
+
+  &.girolibero-btn{
+      display: inline-block;
+      padding: .2235em .2145em;
+      color: $black;
+      font-size: 1.6em;
+      font-weight: 300;
+      text-align: center;
+
+      background-color: $brand;
+  }
+}
+
+.how-it-works {
+  width: 20px;
+  .cls-1{fill:#1d1d1b;stroke:#1d1d1b;stroke-linecap:round;stroke-linejoin:round;}
+  .cls-2{fill:#fff;stroke:#fff;}
+}
+
+.icon-promo {
+  width: 21px;
+  .icon-promo-cls-1{fill:#ff0;}.icon-promo-cls-2{fill:#444;}
+}
+    
+.icon-included {
+  width: 22px;
+  .included-cls-1 {fill:none;stroke:#1d9a1b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.6px;}
+}
+
+.icon-not-included {
+  width: 23px;
+  .not-included-cls-1,.not-included-cls-2{fill:none;stroke:#e75e58;stroke-width:1.3px;}
+  .not-included-cls-1{stroke-miterlimit:10;}
+  .not-included-cls-2{stroke-linecap:round;stroke-linejoin:round;}
+}
+
+.icon-send-email {
+  width: 24px;
+  flex-shrink: 0;
+  .send-email-cls-1{fill:none;stroke:#1d1d1b;stroke-linecap:round;stroke-linejoin:round;}
+}
+
+/*.icon-modify {
+  width: 21px;
+  flex-shrink: 0;
+  .modify-cls-1{
+    fill:none;stroke:#1d1d1b;stroke-linecap:round;stroke-linejoin:round;
+  }
+}*/
+
+.icon-modify {
+  width: 40px;
+  flex-shrink: 0;
+  .icon-modify-cls-1{fill:#fff;}
+  .icon-modify-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;
+    stroke-width:.9px;
+  }
+}
+
+.icon-person {
+  .icon-person-cls-1  {
+    fill:#444;
+  }
+}
+
+.icon-andata-ritorno {
+  width: 2rem;
+}
+
+.icon-andata-ritorno-cut-off {
+  width: 2.4rem;
+}
+
+.icon-download {
+  width: 2rem;
+  .icon-download-cls-1{fill:none;stroke:#1d1d1b;stroke-linecap:round;stroke-linejoin:round;}
+}
+
+.icon-arrow-circle-white {
+  width: 1.9rem;
+  stroke-width:1.3px;
+  .icon-back-white-f{stroke-linecap:round;stroke-linejoin:round;}
+  .icon-back-white-f,.icon-back-white-g{fill:none;stroke:#fff;}
+  .icon-back-white-g{stroke-miterlimit:10;}
+}
+
+.icon-arrow-left-circle-white {
+  .icon-arrow-left-circle-white-st0{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+  .icon-arrow-left-circle-white-st1{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;}
+}
+
+.icon-minutes {
+  width: 14px;
+  vertical-align: -2px;
+  .icon-minutes-f{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:.9px;}
+}
+
+.icon-carte {
+  width:38px;
+
+  .d{fill:none;}
+  .d,.e{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:.75px;}
+  .e{fill:#ff0;}
+}
+.off {
+  .icon-carte {
+    .d,.e{stroke:$taupe-gray;}
+    .e{fill:white;}
+  }
+}
+
+.icon-bonifico {
+  width:38px;
+  .d{fill:none;}
+  .d,.e{stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:.75px;}
+  .e{fill:#ff0;}
+}
+.off {
+  .icon-bonifico {
+    .d,.e{stroke:$taupe-gray;}
+    .e{fill:white;}
+  }
+}
+    
+.icon-volo-incluso {
+  width: 25px;
+  .icon-volo-incluso-cls-1{fill:#cbe5e4;}
+  .icon-volo-incluso-cls-2{fill:#009fe3;}
+}
+
+// DISPONIBLITA' PARTENZE
+
+.icon-available {
+  width: 25px;
+  .icon-available-cls-1{fill:#b7e2b5;}
+  .icon-available-cls-2{fill:#5bbc4a;}
+}
+
+.icon-full {
+  width: 25px;
+  .icon-full-cls-1{fill:#ffc0b2;}
+  .icon-full-cls-2{fill:#ff2b00;}
+}
+   
+.icon-last {
+  width: 25px;
+  .icon-last-cls-1{fill:#fcd2b4;}
+  .icon-last-cls-2{fill:#ff6d00;}
+}
+    
+.icon-calendar-departure {
+  width: 22px;
+  
+  * {
+    stroke-width: .05rem;
+  }
+  
+  .icon-calendar-departure-cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;
+    stroke-width:.08rem;
+  }
+} 
+
+.icon-calendar-choose {
+  width: 23px;
+  height: 24px;
+}
+
+.icon-block {
+  width: 25px;
+  .icon-block-cls-1{fill:#ccd0de;}.icon-block-cls-2{fill:#8690ab;}
+} 
+
+.icon-view-map {
+  width: 24px;
+  .icon-view-map-cls-1{
+    fill:none;
+    stroke:white;
+    stroke-linecap:round;stroke-linejoin:round;
+    stroke-width: .06rem;
+  }
+}
+
+.icon-view-list {
+  width: 24px;
+
+  * {
+    stroke: white;
+    stroke-width: .04rem;
+  }
+}
+
+.icon-more-info {
+  width: 12px;
+
+  .icon-more-info-cls-1 {
+    fill:#fff;
+  }
+}
+
+.icon-more-info-blue {
+  fill: $twitter-blue;
+}
+
+.icon-insurance-included {
+  width: 44px;
+  .icon-insurance-included-cls-1{fill:#fff;}
+  .icon-insurance-included-cls-2{fill:#d6665e;}
+  .icon-insurance-included-cls-3{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.72px;}
+}
+
+// ICONE COMFORT 
+
+.icon-comfort {
+  width: 26px;
+
+  &.icon-comfort-gold {
+    .icon-comfort-cls-1{fill:#f5c938;}
+    .icon-comfort-cls-2{fill:#fbe9af;}
+  }
+  &.icon-comfort-silver {
+    .icon-comfort-cls-1{fill:#99b0c5;}
+    .icon-comfort-cls-2{fill:#c9d5e0;}
+  }
+  &.icon-comfort-bronze {
+    .icon-comfort-cls-1{fill:#d18b61;}
+    .icon-comfort-cls-2{fill:#e2b79d;}
+  }
+  &.icon-comfort-platinum {
+    .icon-comfort-cls-1{fill:#d1eef1;}
+    .icon-comfort-cls-2{fill:#93d8de;}
+  }
+  
+  .icon-comfort-cls-3{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:.5px;}
+}
+
+///
+
+.icon-trip-direction {
+  &:before {
+    @include icon-trip-direction;
+  }
+}
+
+.icon-selected {
+  width: 22px;
+}
+
+.icon-alert {
+  width: 77px;
+  .icon-alert-cls-1{fill:#ff0;}
+  .icon-alert-cls-2{fill:none;stroke:#1d1d1b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.62px;}
+}
+
+.icon-alert-smile {
+  width: 77px;
+  .icon-alert-smile-cls-1{fill:#ff0;}.icon-alert-smile-cls-2{fill:#1d1d1b;}.icon-alert-smile-cls-3{fill:none;stroke:#1d1d1b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.62px;}
+}
+
+.icon-related {
+  width: 30px;
+  .icon-related-cls-1{
+    fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;
+    stroke-width:.7px;
+  }
+}
+
+.original {  
+	.original-st0{fill:none;stroke:#444444;stroke-width:0.55;stroke-miterlimit:10;}
+	.original-st1{fill:none;stroke:#444444;stroke-width:0.55;stroke-linecap:round;stroke-linejoin:round;}
+  
+  &.original-blue {  
+    .original-st0{stroke:$twitter-blue ;}
+    .original-st1{stroke:$twitter-blue ;}
+  }
+}
+
+// ICONE SEZIONI BOOKING
+
+.icon-booking-section {
+  svg, img {    // NB: al momento le icone camere vengono messe come img
+    width: 40px;
+  }
+}
+
+$icon-booking-stroke-width: .8px;
+
+.icon-participants {
+  .icon-participants-cls-1{fill:none;}.icon-participants-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-rooms {
+  .icon-rooms-cls-1{fill:none;}.icon-rooms-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+} 
+
+.icon-meals {
+  .icon-meals-cls-1{fill:none;}.icon-meals-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-nights {
+  .icon-nights-cls-1{fill:none;}.icon-nights-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-bicycles {
+  .icon-bicycles-cls-1{fill:none;}.icon-bicycles-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-accessories {
+  .icon-accessories-cls-1{fill:none;}.icon-accessories-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-transfer {
+  .icon-transfer-cls-1{fill:none;}.icon-transfer-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-insurance {
+  .icon-insurance-cls-1{fill:none;}.icon-insurance-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-voucher {
+  .icon-voucher-cls-2{fill:none;}.icon-voucher-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+.icon-flights {
+  .icon-flights-cls-1{fill:none;}.icon-flights-cls-2{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:$icon-booking-stroke-width;}
+}
+
+/*
+// ICON SET 2021 Test
+*/
+/*
+@font-face {
+  font-family: 'Girolibero21';
+  src:  url('../fonts/GiroliberoIcons.eot?6rroth');
+  src:  url('../fonts/GiroliberoIcons.eot?6rroth#iefix') format('embedded-opentype'),
+  url('../fonts/GiroliberoIcons.ttf?6rroth') format('truetype'),
+  url('../fonts/GiroliberoIcons.woff?6rroth') format('woff'),
+  url('../fonts/GiroliberoIcons.svg?6rroth#GiroliberoIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.IconsGIROLIBEROattivita {
+  &:before {
+    content: $IconsGIROLIBEROattivita; 
+    font-family: 'Girolibero21';
+    font-size: 2.4rem;
+  }
+}
+.IconsGIROLIBERObici {
+  &:before {
+    content: $IconsGIROLIBERObici; 
+  }
+}
+.IconsGIROLIBERObicibarca {
+  &:before {
+    content: $IconsGIROLIBERObicibarca; 
+  }
+}
+.IconsGIROLIBERObicicorsa {
+  &:before {
+    content: $IconsGIROLIBERObicicorsa; 
+  }
+}
+.IconsGIROLIBERObicihotel {
+  &:before {
+    content: $IconsGIROLIBERObicihotel; 
+  }
+}
+.IconsGIROLIBEROfamiglia {
+  &:before {
+    content: $IconsGIROLIBEROfamiglia; 
+  }
+}
+.IconsGIROLIBEROformula {
+  &:before {
+    content: $IconsGIROLIBEROformula; 
+  }
+}
+.IconsGIROLIBEROgruppo {
+  &:before {
+    content: $IconsGIROLIBEROgruppo; 
+  }
+}
+.IconsGIROLIBEROindividuale {
+  &:before {
+    content: $IconsGIROLIBEROindividuale; 
+  }
+}
+.IconsGIROLIBEROsumisura {
+  &:before {
+    content: $IconsGIROLIBEROsumisura; 
+  }
+}
+.IconsGIROLIBEROtrekking {
+  &:before {
+    content: $IconsGIROLIBEROtrekking; 
+  }
+}
+.IconsGIROLIBEROviaggiamondo {
+  &:before {
+    content: $IconsGIROLIBEROviaggiamondo; 
+  }
+}
+*/
+
+/*
+// ICON SET 2021 Test #2
+*/
+/*
+@font-face {
+  font-family: 'Girolibero211';
+  src:  url('../fonts/GiroliberoIcons1.eot?6rroth');
+  src:  url('../fonts/GiroliberoIcons1.eot?6rroth#iefix') format('embedded-opentype'),
+  url('../fonts/GiroliberoIcons1.ttf?6rroth') format('truetype'),
+  url('../fonts/GiroliberoIcons1.woff?6rroth') format('woff'),
+  url('../fonts/GiroliberoIcons1.svg?6rroth#GiroliberoIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.IconsGIROLIBEROattivita {
+  &:before {
+    content: $IconsGIROLIBEROactivities; 
+    font-family: 'Girolibero211';
+    font-size: 2rem;
+  }
+}
+.IconsGIROLIBEROair-ticket-office {
+  &:before {
+    content: $IconsGIROLIBEROair-ticket-office; 
+  }
+}
+.IconsGIROLIBEROalone {
+  &:before {
+    content: $IconsGIROLIBEROalone; 
+  }
+}
+.IconsGIROLIBEROanello {
+  &:before {
+    content: $IconsGIROLIBEROanello; 
+  }
+}
+.IconsGIROLIBEROarchitecture {
+  &:before {
+    content: $IconsGIROLIBEROarchitecture; 
+  }
+}
+.IconsGIROLIBEROassistance {
+  &:before {
+    content: $IconsGIROLIBEROassistance; 
+  }
+}
+.IconsGIROLIBERObeach {
+  &:before {
+    content: $IconsGIROLIBERObeach; 
+  }
+}
+.IconsGIROLIBERObike-and-boat {
+  &:before {
+    content: $IconsGIROLIBERObike-and-boat; 
+  }
+}
+.IconsGIROLIBERObike-and-hotel {
+  &:before {
+    content: $IconsGIROLIBERObike-and-hotel; 
+    font-family: 'Girolibero211';
+    font-size: 2rem;
+  }
+}
+.IconsGIROLIBERObike {
+  &:before {
+    content: $IconsGIROLIBERObike; 
+    font-family: 'Girolibero211';
+    font-size: 2rem;
+  }
+}
+.IconsGIROLIBEROboat {
+  &:before {
+    content: $IconsGIROLIBEROboat; 
+  }
+}
+.IconsGIROLIBEROcanoe {
+  &:before {
+    content: $IconsGIROLIBEROcanoe; 
+  }
+}
+.IconsGIROLIBEROcatamaran {
+  &:before {
+    content: $IconsGIROLIBEROcatamaran; 
+  }
+}
+.IconsGIROLIBEROchild-bike-accessories {
+  &:before {
+    content: $IconsGIROLIBEROchild-bike-accessories; 
+  }
+}
+.IconsGIROLIBEROcomfort {
+  &:before {
+    content: $IconsGIROLIBEROcomfort; 
+  }
+}
+.IconsGIROLIBEROcrew {
+  &:before {
+    content: $IconsGIROLIBEROcrew; 
+  }
+}
+.IconsGIROLIBEROcustomer-care {
+  &:before {
+    content: $IconsGIROLIBEROcustomer-care; 
+  }
+}
+.IconsGIROLIBEROcut-to-size {
+  &:before {
+    content: $IconsGIROLIBEROcut-to-size; 
+  }
+}
+.IconsGIROLIBEROcycling {
+  &:before {
+    content: $IconsGIROLIBEROcycling; 
+  }
+}
+.IconsGIROLIBEROdog {
+  &:before {
+    content: $IconsGIROLIBEROdog; 
+  }
+}
+.IconsGIROLIBEROelectric-bike {
+  &:before {
+    content: $IconsGIROLIBEROelectric-bike; 
+  }
+}
+.IconsGIROLIBEROextra-nights {
+  &:before {
+    content: $IconsGIROLIBEROextra-nights; 
+  }
+}
+.IconsGIROLIBEROfamily {
+  &:before {
+    content: $IconsGIROLIBEROfamily; 
+  }
+}
+.IconsGIROLIBEROflydry {
+  &:before {
+    content: $IconsGIROLIBEROflydry; 
+  }
+}
+.IconsGIROLIBEROfood-diets {
+  &:before {
+    content: $IconsGIROLIBEROfood-diets; 
+  }
+}
+.IconsGIROLIBEROgourmet {
+  &:before {
+    content: $IconsGIROLIBEROgourmet; 
+  }
+}
+.IconsGIROLIBEROguided-tours {
+  &:before {
+    content: $IconsGIROLIBEROguided-tours; 
+  }
+}
+.IconsGIROLIBEROhelmet {
+  &:before {
+    content: $IconsGIROLIBEROhelmet; 
+  }
+}
+.IconsGIROLIBEROhouseboat {
+  &:before {
+    content: $IconsGIROLIBEROhouseboat; 
+  }
+}
+.IconsGIROLIBEROinfo-material {
+  &:before {
+    content: $IconsGIROLIBEROinfo-material; 
+  }
+}
+.IconsGIROLIBEROinsurance {
+  &:before {
+    content: $IconsGIROLIBEROinsurance; 
+  }
+}
+.IconsGIROLIBEROlineare {
+  &:before {
+    content: $IconsGIROLIBEROlineare; 
+  }
+}
+.IconsGIROLIBEROluggage-transport {
+  &:before {
+    content: $IconsGIROLIBEROluggage-transport; 
+  }
+}
+.IconsGIROLIBEROmaintenance {
+  &:before {
+    content: $IconsGIROLIBEROmaintenance; 
+  }
+}
+.IconsGIROLIBEROmargherita {
+  &:before {
+    content: $IconsGIROLIBEROmargherita; 
+  }
+}
+.IconsGIROLIBEROmarried {
+  &:before {
+    content: $IconsGIROLIBEROmarried; 
+  }
+}
+.IconsGIROLIBEROmeal {
+  &:before {
+    content: $IconsGIROLIBEROmeal; 
+  }
+}
+.IconsGIROLIBEROmountain {
+  &:before {
+    content: $IconsGIROLIBEROmountain; 
+  }
+}
+.IconsGIROLIBEROnature {
+  &:before {
+    content: $IconsGIROLIBEROnature; 
+  }
+}
+.IconsGIROLIBEROoriginal {
+  &:before {
+    content: $IconsGIROLIBEROoriginal; 
+  }
+}
+.IconsGIROLIBEROparticula-bikes {
+  &:before {
+    content: $IconsGIROLIBEROparticula-bikes; 
+  }
+}
+.IconsGIROLIBEROracing-bike {
+  &:before {
+    content: $IconsGIROLIBEROracing-bike; 
+  }
+}
+.IconsGIROLIBEROroadbike {
+  &:before {
+    content: $IconsGIROLIBEROroadbike; 
+  }
+}
+.IconsGIROLIBEROsailboat {
+  &:before {
+    content: $IconsGIROLIBEROsailboat; 
+  }
+}
+.IconsGIROLIBEROsailboat2 {
+  &:before {
+    content: $IconsGIROLIBEROsailboat2; 
+  }
+}
+.IconsGIROLIBEROself-guide {
+  &:before {
+    content: $IconsGIROLIBEROself-guide; 
+  }
+}
+.IconsGIROLIBEROship-ticket-office {
+  &:before {
+    content: $IconsGIROLIBEROship-ticket-office; 
+  }
+}
+.IconsGIROLIBEROspecialist {
+  &:before {
+    content: $IconsGIROLIBEROspecialist; 
+  }
+}
+.IconsGIROLIBEROsupplements {
+  &:before {
+    content: $IconsGIROLIBEROsupplements; 
+  }
+}
+.IconsGIROLIBEROtour-leader {
+  &:before {
+    content: $IconsGIROLIBEROtour-leader; 
+  }
+}
+.IconsGIROLIBEROtours {
+  &:before {
+    content: $IconsGIROLIBEROtours; 
+  }
+}
+.IconsGIROLIBEROtrain-ticket-office {
+  &:before {
+    content: $IconsGIROLIBEROtrain-ticket-office; 
+  }
+}
+.IconsGIROLIBEROtransfer {
+  &:before {
+    content: $IconsGIROLIBEROtransfer; 
+  }
+}
+.IconsGIROLIBEROtrekking {
+  &:before {
+    content: $IconsGIROLIBEROtrekking; 
+  }
+}
+.IconsGIROLIBEROvillage-people {
+  &:before {
+    content: $IconsGIROLIBEROvillage-people; 
+  }
+}
+.IconsGIROLIBEROwellness {
+  &:before {
+    content: $IconsGIROLIBEROwellness; 
+  }
+}
+.IconsGIROLIBEROwiith-who {
+  &:before {
+    content: $IconsGIROLIBEROwiith-who; 
+  }
+}
+*/

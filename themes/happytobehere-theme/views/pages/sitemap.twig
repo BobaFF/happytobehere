@@ -1,0 +1,26 @@
+{% import "components/macros.twig" as macros %}
+{% extends "base.twig" %}
+{% block page_title %}
+	{{post.title}}
+	-
+{% endblock page_title %}
+{% block content %}
+        <div id="sitemap">
+        {% for category in categories %}
+            {% if category.name != "Uncategorized" %}
+            <h3>{{category.name}}</h3>
+            <ul>
+                {% for post in posts %}
+                {% for cat in post.terms('category')%}
+                    {% if cat == category.name %}
+                        <li><a href="{{site.url}}/{{post.terms('category') | join(', ') |replace({' ': "-"})}}/{{post.slug}}">{{post.title}} - 
+                            <time datetime="{{ post.date('Y-m-d H:i:s') }}">{{ post.date }}</time>
+                        </a></li>
+                    {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endfor %}
+        </div>
+{% endblock %}

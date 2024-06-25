@@ -1,0 +1,90 @@
+{% import "components/macros.twig" as macros %}
+{% extends "base.twig" %}
+{% block page_title %}
+	{{post.title}}
+	-
+{% endblock page_title %}
+{% block content %}
+	<div
+		class="row">
+		<article id="single-post" class="col-12 col-lg-8">
+					<header>
+						<img src="{{post.thumbnail}}">
+						<p>
+							<time datetime="{{ post.date('Y-m-d H:i:s') }}">{{ post.date }}
+							</time>
+							<span>
+								/
+							</span>
+							<a class="post-author" href="{{site.url}}/author/{{post.author.slug}}">
+								{{ post.author.name }}
+							</a>
+							<span>
+								/
+							</span>
+							{% for cat in post.terms('category')%}
+								<span class="post-category">
+		
+									<a href="{{site.url}}/{{cat|replace({' ': "-"})}}">{{cat}}</a>
+								</span>
+							{% endfor %}
+						</p>
+						<h1>{{post.title}}</h1>
+					</header>
+					<div>
+						{{ post.content }}
+					</div>
+					<footer>
+						
+						{% if post.terms('tag')%}
+							<ul class="tags d-inline-flex justify-content-start">
+								{% for tag in post.terms('tag') %}
+									<li>
+										<a href="{{site.url}}/tag/{{tag.slug}}">{{tag.title}}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+						{% if post.meta('visualizza_descrizione_autore') %}
+						<div id="post-author-section">
+							<h3>{{post.author.name}}</h3>
+							<div class="d-flex align-items-center">
+							{% if author_img != "" %}
+								<img src="{{author_img}}">
+							{% endif %}
+								<p>{{post.author.meta('description')}}</p>
+							</div>
+						</div>
+					{% endif %}
+						<div>
+							<div id="prevNextBtn" class="d-flex justify-content-between">
+							{% if post.prev %}
+    							<a href="{{ post.prev.link }} "id="precBtn">Articolo precedente</a>
+							{% endif %}
+							{% if post.next %}
+    							<a href="{{ post.next.link }}" id="nextBtn">Articolo successivo</a>
+							{% endif %}
+							</div>
+							<hr>
+						</div>
+					</footer>
+				</article>
+		
+				<aside class="d-none d-lg-block col-12 col-lg-4">
+					<div>
+						<h4>tag</h4>
+						{{macros.tags_loop(tags, 10)}}
+						<a href="{{site.url}}/tutti-i-tag">vedi tutti</a>
+					</div>
+					<div>
+						<h4>Il blog in mappa</h4>
+						<a href="{{site.url}}/il-blog-in-mappa"><img id="map-img" src="{{site.url}}/wp-content/themes/happytobehere-theme/assets/img/map.png"></a>
+					</div>
+					<div>
+						<h4>i più popolari</h4>
+						{{macros.small_posts(most_viewed_posts, 3)}}
+						<a href="{{site.url}}/i-piu-popolari">vedi tutti</a>
+					</div>
+				</aside>
+	</div>
+{% endblock %}

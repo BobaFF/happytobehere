@@ -1,0 +1,21 @@
+{% import "components/macros.twig" as macros %}
+{% extends "base.twig" %}
+{% block content %}
+    {% block title %}
+    {% endblock title %}
+        <ul class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 gx-4 gy-5" id="post-list-container">
+            {% block posts_list %}{{macros.posts_list(post)}}{% endblock posts_list %}
+            {{macros.insert_newsletter()}}
+        </ul>
+        {% if post|length >= 10 %}
+            <a href="#" id="load-more-posts" class="d-flex align-items-center">
+            <span id="load-more-posts-button">+</span><span>Carica altri post</span></a>
+            <div class="d-none loader lds-ellipsis" id="more-posts-loader">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        {% endif %}
+{% endblock content %}
+

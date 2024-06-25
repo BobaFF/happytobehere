@@ -1,0 +1,651 @@
+/* UTILITIES */
+
+@mixin ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin column-justify-content-between {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@mixin reset-ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li:before {
+        content: none;
+    }
+}
+
+@mixin ms-new-line {
+    @include media-breakpoint-down('ms') {
+        &::before {
+            content: "\a";
+            white-space: pre;
+        }
+    }
+}
+
+@mixin row-no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col, > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@mixin main-section-cont {
+    @include media-breakpoint-up(lg) {
+        max-width: $main-section-cont-lg-max-width;
+    }
+    @include media-breakpoint-up(xl) {
+        max-width: $main-section-cont-xl-max-width;
+    }
+    @include media-breakpoint-up(xxl) {
+        max-width: $main-section-cont-xxl-max-width;
+    }
+}
+
+/*** STILI ***/
+
+@mixin body-font {
+    font-family: $font-family-sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: $body-color;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin testo-grande {       // testo menù principali, page 404, search-home-section
+    font-size: 1.5rem;
+    font-weight: $font-weight-light;
+}
+
+@mixin testo-piccolo {       // testo logo Axa, booking summary prices
+    font-size: $font-size-sm;
+    font-weight: $font-weight-light;
+}
+
+@mixin text-underline {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin testo-azzurro {
+    color: $twitter-blue !important;
+}   
+
+@mixin prezzo-barrato {
+    background: linear-gradient(180deg, 
+        rgba(0,0,0,0) calc(50% - 2px), 
+        $twitter-blue calc(50%), 
+        rgba(0,0,0,0) calc(50% + 1px)
+    ); 
+    padding: 0 1px;
+}
+
+/* Display */
+
+@mixin display-base {
+    line-height: 1.25;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+@mixin display-small {      // titoletto ADV
+    @include display-base;
+    font-size: $font-size-md;
+    letter-spacing: .02rem;
+}
+
+@mixin display-medium {      // titoletti form generici in sipario, menù
+    @include display-base;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    color: black;
+}
+
+@mixin display-large {      // counter ADV
+    @include display-base;
+    font-size: 3rem;
+    letter-spacing: .2rem;
+}
+
+@mixin display-xl {      // search home section title, 404 title
+    text-transform: uppercase;
+    font-weight: 700;
+    color: black;
+    font-size: 5rem;
+
+    @include media-breakpoint-down(xl) {
+        font-size: 4.67vw;
+    }
+    @include media-breakpoint-down(md) {
+        font-size: 3.6vw;
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 2rem;
+    }
+}
+
+/* Titoletti */
+
+@mixin titoletto-base($color: $gray-800) {
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    color: $color;
+    letter-spacing: .075rem;
+}
+
+@mixin titoletto($color: $gray-800) {
+    @include titoletto-base($color);
+    font-weight: 400;
+}
+
+@mixin titoletto-medium($color: $gray-800) {
+    @include titoletto-base($color);
+    font-weight: 500;
+}
+
+@mixin titoletto-small($color: $gray-800) {
+    @include titoletto($color);
+    font-size: .85rem;
+    letter-spacing: .05rem;
+}
+
+@mixin titoletto-xxs {
+    font-size: $font-size-xxs;
+    letter-spacing: .0285rem; // == .4px
+    text-transform: uppercase;
+
+    @include media-breakpoint-down($reset-zoom-breakpoint-down) {
+        font-size: $font-size-xxs*$mobile-reset-zoom-factor;
+    }
+}
+
+@mixin titoletto-serif {
+    font-family: 'Georgia', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: normal;
+
+    @include media-breakpoint-down(sm){
+      font-size: $font-size-md;
+    }
+}
+
+@mixin titoletto-paragrafo {
+    font-weight: 500;
+    font-family: $font-family-base;
+    line-height: $line-height-base;
+    @include my(0);
+    font-size: 1rem;
+}
+
+@mixin titoletto-price {
+    @include titoletto($black);
+    font-size: $price-small-font-size;
+}
+
+@mixin titoletto-display {      // usato in form, menù
+    @include display-medium;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Titoli search column */
+
+@mixin search-column-title {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+/* Titoli sipari caroselli */
+
+@mixin carousel-curtain-title {
+    font-size: 1.45rem;
+    margin-bottom: .75rem;
+    font-weight: 500;
+    color: $gray-900;
+}
+
+/* Link */
+
+// utilities per stili link
+@mixin link-base {
+    font-size: $font-size-sm;
+    cursor: pointer;
+}
+
+@mixin link-color {
+    color: $link-color;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+}
+
+// mixin per classi link
+
+@mixin link {
+    @include link-base;
+    @include link-color;
+    font-style: italic;
+    font-weight: 400;
+    transition: color .5s ease;
+}
+
+@mixin link-underline-italic {
+    @include link;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
+@mixin link-normal {
+    @include link-color;
+    font-size: inherit;
+    font-style: normal;
+    transition: color .5s ease;
+    cursor: pointer;
+}
+
+@mixin link-underline {
+    @include link-normal;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: underline;
+    }
+}
+
+@mixin link-normal-400 {
+    @include link-normal;
+    font-weight: 400;
+}
+
+@mixin link-underline-black {
+    @include link-base;
+    @include text-underline;
+    color: $body-color;
+}
+
+@mixin link-titoletto {
+    color: $body-color;
+    font-style: italic;
+    font-weight: 300;
+}
+
+@mixin link-editable {
+    font-weight: 400;
+}
+
+/* Liste */
+
+@mixin horizontal-list {
+    li {
+        padding: 0;
+        display: inline-block;
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+@mixin standard-ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    
+    li {
+        padding-left: 0.8rem;
+        padding-bottom: 0;
+
+        &:before {
+            content: '·';
+            display: inline-block;
+            margin-left: -0.8rem;
+            margin-right: .5rem;
+        }
+    }
+}
+
+@mixin links-ul {
+    @include standard-ul;
+    
+    li {
+        &:before {
+            color: $link-color;
+        }
+        &:hover {
+            &:before {
+                color: $link-hover-color;
+            }
+        }
+    }
+}
+
+/* Bottoni */
+
+@mixin new-rounded-btn($bg-color: $primary, $text-color: $gray-800, $px: 1rem) { 
+    background-color: $bg-color;
+    display: inline-block;
+    height: $new-rounded-btn-height;
+    line-height: $new-rounded-btn-height;
+    border-radius: $new-rounded-btn-height / 2;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $text-color;
+    padding: 0px $px;
+    text-align: center;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+
+    img, svg {
+        margin-left: 1rem;
+
+        @include media-breakpoint-down(xs) {
+            margin-left: .5rem;
+        }
+    }
+}
+
+@mixin new-rounded-yellow-btn {     // scegli data di partenza booking (TO DO: FAQ? Menù?)
+    @include new-rounded-btn($primary, $gray-800, 1rem);
+}
+
+@mixin new-rounded-black-btn { 
+    @include new-rounded-btn($black, $white, 1.5rem);
+}
+
+@mixin new-rounded-gray-btn { 
+    @include new-rounded-btn($bright-gray, $gray-800, 1rem);
+}
+
+@mixin rounded-yellow-btn {     // bottoni gialli menù principale (TO DO: da cambiare?)
+    border: 1px solid $gray-500;
+    color: $body-color;
+    border-radius: 3px;
+    text-transform: none;
+    letter-spacing: 0.01rem;
+    font-weight: 300;
+    font-size: .85rem;
+    @include py(.2rem);
+}
+
+@mixin squared-yellow-btn {         // page 404
+    color: $gray-900;
+    border: none;
+    border-radius: inherit;
+    background-color: $primary;
+    font-size: .9rem;
+    letter-spacing: .05rem;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 1.15rem 1.6rem;
+    font-weight: 500;
+    
+    &:hover {
+        color: $black;
+    }
+}
+
+@mixin squared-black-btn-small {    // List mobile btns
+    background: black;
+    color: white;
+    font-size: .8rem;
+    letter-spacing: .075rem;
+    @include px(.75rem);
+}
+
+@mixin read-more-btn {
+    @include link;
+    padding: $btn-padding-y $btn-padding-x;
+    border: 1px solid $olive;
+    transition: color .5s ease, border-color .5s ease;
+    font-size: 1rem !important;
+    display: inline-block;
+
+    &:hover {
+        border-color: $yellow-green;
+    }
+}
+
+@mixin cta-btn($bg: $primary) {
+    @include titoletto-price;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .62rem $cta-btn-px;
+    margin-bottom: 0;
+    text-align: center;
+    background-color: $bg;
+    min-height: $left-col-fixed-bar-height;
+    font-weight: 500;
+
+    @include media-breakpoint-down(ms) {
+        font-size: .75rem;
+    }
+
+    span {
+        text-align: left;
+    }
+}
+
+@mixin black-cta-btn {
+    @include cta-btn($bg: $black);
+    color: white;
+}
+
+@mixin gray-cta-btn {
+    @include cta-btn($bg: $bright-gray);
+}
+
+@mixin select-triangle-arrow {
+    content: "";
+    justify-self: end;
+    width: .5rem;
+    height: .35rem;
+    background-color: $body-color;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+/* Altro */
+
+/* TO DO: uniformare i vari box-shadow */
+@mixin box-shadow {
+    box-shadow: $carousel-item-box-shadow;
+}
+@mixin box-shadow-light  {
+	box-shadow: $box-shadow-light;
+}
+
+/*** LISTA: meccanismi colonne flessibili ***/
+
+@mixin full-list-hidden-map {
+    #list-map-col {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+    }
+
+    #list-tiles-col {
+        width: 100%;
+        max-width: none;
+        padding-right: 0;
+    }
+}
+
+/* MAP TILE: mixins */
+
+@mixin tile-img-4-cols {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%;
+}
+
+@mixin trip-info-8-cols {
+    flex-basis: 66.6667%;
+    max-width: 66.6667%;
+}
+
+@mixin col-12 {
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+// TO DO: vedere se alla fine questi 2 mixin verranno usati, perché forse non ci saranno più casi di tile con immagine nascosta 
+@mixin hidden-tile-img {
+    flex-basis: 0;
+    .favourite-btn {
+        display: none;
+    }
+}
+
+@mixin expanded-trip-info {
+    @include col-12;
+    padding-left: 11px !important;
+}
+
+/*** PRICING - FIXED ***/
+
+@mixin fixed-pricing {
+    background: $primary;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    padding-left: 0;
+    padding-right: 0;
+    //height: $left-col-fixed-bar-height;
+    height: auto;
+    @include media-breakpoint-up(xxl) {
+        width: 50% !important;  // col-6
+    }
+    @include media-breakpoint-between(lg,xl) {
+        width: 58.3333% !important;  // col-7
+    }
+    @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+        width: 100% !important;     // ridimensionamento da LG a MD: sovrascrive la width stabilita via js in caso di fixed-cta-bar
+    }
+}
+
+@mixin absolute-pricing {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100% !important;
+}
+
+/*** TOOLTIP ***/
+
+@mixin open-tooltip {
+    opacity: 1;
+    z-index: 14;    // dev'essere > allo z-index dell'overlay (per tooltip mobile lista)
+    transition: transform .4s ease, opacity .5s ease;
+    display: block;
+
+    @include media-breakpoint-down(sm) {
+        transition: opacity .3s ease;
+    }
+}
+
+/*** BOOKING ***/
+
+@mixin calendar-dot {
+    content: "\2022";
+    position: absolute;
+    font-size: 4.2rem;
+    color: $available-green-legend;
+}
+
+@mixin calendar-dot-bottom {
+    @include calendar-dot;
+    left: 50%;
+    top: calc(51% - (#{$booking-calendar-pmu-pb} / 2));
+    transform: translate(-52%,-51%);
+    color: $available-green;
+    z-index: -1;
+    font-size: 0rem;
+    background: $available-green;
+    height: $booking-calendar-dot-width;
+    width: $booking-calendar-dot-width;
+    border-radius: calc( #{$booking-calendar-dot-width} / 2 );
+}
+
+@mixin calendar-dot-left {
+    @include calendar-dot;
+    line-height: 1rem;
+    left: 0;
+    transform: translateX(-28%);
+
+    @include media-breakpoint-down(ms) {
+        line-height: .7rem;
+        font-size: 3.4rem;
+    }
+}
+
+@mixin calendar-dot-last-places {
+    color: $last-places-orange-legend;
+}
+
+@mixin calendar-dot-wait-list {
+    color: $wait-list-red-legend;
+}
+
+@mixin calendar-dot-complete {
+    color: $complete-legend;
+}
+
+@mixin booking-input-col {
+    max-width: $form-richiesta-input-col-width;
+    margin-left: -$form-richiesta-input-col-width;
+    
+    @include media-breakpoint-down(lg) {
+        padding-right: 0;
+        z-index: 2; // per risolvere bug dovute a difficoltà sui click degli option input
+    }
+    @include media-breakpoint-down(#{$booking-mobile-breakpoint-down}) {
+        max-width: calc((-1 * #{$form-richiesta-input-col-ml-mob}) + (#{$grid-gutter-width} / 2));
+        margin-left: $form-richiesta-input-col-ml-mob;
+    }
+}
+
+@mixin booking-text-col {
+    @include media-breakpoint-down(ms) {
+        padding-left: 0;
+    }
+}
+
+/* ICONE */
+
+@mixin icon-trip-direction {
+    content: '\2192';
+    font-size: 11px;
+}

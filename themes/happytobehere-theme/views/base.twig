@@ -1,0 +1,129 @@
+{% import "components/macros.twig" as macros %}
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta charset="utf-8">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		{{function('wp_head')}}
+		<link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+		<title>
+			{% block page_title %}{% endblock page_title %}
+			{{site.title}}</title>
+	</head>
+	<body data-archiveType="{% block archive_type %}{% endblock archive_type %}"
+		data-archiveValue="{% block archive_value %}{% endblock archive_value %}"
+		data-mapPage="{% block map_page %}{% endblock map_page %}"
+		data-searchPage="{% block search_page %}{% endblock search_page %}">
+		<nav aria-label="Aiuti alla navgiazione">
+            <a class="navigationhelp" href="#content" tabindex="0">Vai al contenuto</a>
+        </nav>
+		<header>
+			<!--STICKY MENU-->
+				<div id="sticky-menu" class="d-xl-inline-flex fixed-top w-100 justify-content-between"> <div class="d-flex align-items-start left-container">
+					{{function('do_shortcode', '[wpdreams_ajaxsearchlite]')}}
+					{% block sticky_title %}
+						<h1 class="d-none d-xl-none"><a href="{{site.url}}">{{site.title}}</a></h1>
+					{% endblock sticky_title %}
+					<button class="search-mobile-toggler d-block d-md-none searchOpacity" aria-label="open search bar">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22" height="22" viewbox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+							<path d="M460.355,421.59L353.844,315.078c20.041-27.553,31.885-61.437,31.885-98.037
+														C385.729,124.934,310.793,50,218.686,50C126.58,50,51.645,124.934,51.645,217.041c0,92.106,74.936,167.041,167.041,167.041
+														c34.912,0,67.352-10.773,94.184-29.158L419.945,462L460.355,421.59z M100.631,217.041c0-65.096,52.959-118.056,118.055-118.056
+														c65.098,0,118.057,52.959,118.057,118.056c0,65.096-52.959,118.056-118.057,118.056C153.59,335.097,100.631,282.137,100.631,217.041
+														z"></path>
+						</svg>
+					</button>
+				</div>
+				<div
+					class="d-none d-xl-inline-flex justify-content-end">
+					<nav class="d-none d-xl-inline-flex about-menu" aria-label="informations menu">
+						{{macros.about_menu(about_menu)}}
+					</nav>
+					<nav class="d-xl-inline-flex main-menu" aria-label="category menu">{{macros.category_menu(category_menu)}}</nav>
+				</div>
+			</div>
+
+			<!--MAIN TITLE-->
+			<div class="col container" id="title-row">
+				<h1 lang="en" class="col">
+					<a href="/index.php" lang="en">
+						Happy
+						<br>to be here
+						<img id="title-logo" src="{{site.url}}/wp-content/themes/happytobehere-theme/assets/img/logo.png">
+					</a>
+				</h1>
+				<h2 class="col">Il blog di Girolibero</h2>
+			</div>
+
+			<!--MENU MOBILE-->
+			<nav class="menu-mobile" aria-label="mobile menu">
+				<div id="mobile-menu-controls" class="d-flex d-xl-none mobile-menu">
+					<button id="menu-toggler" class="p-0 menu-opener" type="button" aria-label="open mobile menu">
+						<svg class="hamburger-menu" data-name="hamburger menu" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24">
+
+							<line class="cls-hamburger-menu" x1="1.27" y1="21.06" x2="22.89" y2="21.06"></line>
+							<line class="cls-hamburger-menu" x1="1.27" y1="2.98" x2="22.89" y2="2.98"></line>
+							<line class="cls-hamburger-menu" x1="1.27" y1="12" x2="22.89" y2="12"></line>
+						</svg>
+					</button>
+				</div>
+
+				<div class="d-flex flex-column d-xl-none mobile-main-menu" id="mobile-menu">
+					<div>
+						<nav class="d-inline-flex about-menu" aria-label="informations mobile menu">
+							{{macros.about_menu(about_menu)}}
+						</nav>
+					</div>
+					<div>
+						<p>Menù</p>
+						<nav class="d-xl-inline-flex main-menu" aria-label="categories mobile menu">{{macros.category_menu(category_menu)}}</nav>
+					</div>
+					<div>
+						<p>Tag</p>
+						{{ macros.tags_loop(tags, 10)}}
+						<a href="{{site.url}}/tutti-i-tag">Vedi tutti</a>
+					</div>
+					<div>
+						<p>I più popolari</p>
+						{{ macros.small_posts(most_viewed_posts, 3, "column")}}
+						<a href="{{site.url}}/i-piu-popolari">Vedi tutti</a>
+					</div>
+					<div>
+						{{macros.social_buttons()}}
+					</div>
+
+					<span class="closemenu-btn">
+						<svg class="icon-close-black-circle" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+							<g id="Livello_2">
+								<path class="icon-close-black-circle-cls-1" d="M18.63,5.26a9.44,9.44,0,1,1-13.35,0,9.45,9.45,0,0,1,13.35,0"></path>
+								<circle class="icon-close-black-circle-cls-2" cx="11.96" cy="11.94" r="9.44"></circle>
+								<line class="icon-close-black-circle-cls-3" x1="9.22" y1="9.2" x2="14.69" y2="14.67"></line>
+								<line class="icon-close-black-circle-cls-3" x1="9.22" y1="14.67" x2="14.69" y2="9.2"></line>
+							</g>
+						</svg>
+					</span>
+				</div>
+			</nav>
+
+
+		</header>
+
+		<main id="content" class="container"> {% block content %}{% endblock %}			</main>
+			<footer class="container">
+
+				{{macros.social_buttons()}}
+				<a href="https://www.girolibero.it/" target="_blank" id="girolibero-banner">
+					<span>girolibero</span>
+					viaggiare facili e leggeri</a>
+			</footer>
+			<a href="#" id="to-top" class="nascosto">Torna su
+			</a>
+			{{function('wp_footer')}}
+			<script>const siteUrl = "{{site.url}}"</script>
+		</body>
+</html>

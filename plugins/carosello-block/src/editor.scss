@@ -1,0 +1,50 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-carosello-block-carosello-block {
+    background-color: white;
+}
+
+option {
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.carosello-list>div {
+    box-shadow: 0 2px 0.7rem 1px rgba(0, 0, 0, 0.1);
+        height: 326px;
+        width: 234px;
+        margin: 10px 22px;
+        display: inline-block;
+    .item-img-cont {
+        height: 226px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    .item-texts {
+        flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    .item-texts-top {
+        p {
+            line-height: inherit;
+    color: #000;
+    margin-bottom: 0;
+    font-size: 14px;
+    padding: 0;
+        }
+        .title {
+            font-weight: bold;
+        }
+    }
+    }
+}

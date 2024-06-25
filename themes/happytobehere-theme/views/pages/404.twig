@@ -1,0 +1,15 @@
+{% import "components/macros.twig" as macros %}
+{% extends "base.twig" %}
+{% block page_title %}
+    Pagina non trovata - 
+{% endblock page_title %}
+{% block sticky_title %}
+    <h1 class="d-none d-xl-none"><a href="{{site.url}}">{{site.title}}</a></h1>
+{% endblock sticky_title %}
+{% block content %}
+    <h2 class="ms-0 mt-5 pt-5">Ops: ti sei perso.</h2>
+    <p class="ps-0 container">Hai smarrito la strada e perso la guida del viaggio: la pagina che stai cercando non esiste o è stata rimossa.
+    <a href="{{site.url}}">Riparti dalla home</a>.</p>
+    </main>
+</html>
+{% endblock content %}

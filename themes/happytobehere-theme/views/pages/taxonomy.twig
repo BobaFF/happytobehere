@@ -1,0 +1,28 @@
+{% extends 'pages/archive.twig' %}
+{% block archive_type %}{{term.taxonomy}}{% endblock archive_type %}
+{% block archive_value %}{{term.id}}{% endblock archive_value %}
+{% block sticky_title %}
+    <h1 class="d-none d-xl-none taxonomy">{{term.name}}</h1>
+{% endblock sticky_title %}
+{% block page_title %}
+    {{term.name}} - 
+{% endblock page_title %}
+{% block title %}
+<h2 class="taxonomy-title">
+    {% if term.taxonomy == 'destinazione' %}
+        PAESE: {{parent_term.name}} > {{ term.name }}
+    {% elseif term.taxonomy == 'regione' %}
+        REGIONE: {{ term.name }}
+    {% else %}
+        CITTÀ: {{ term.name }}
+    {% endif %}
+</h2>
+
+<p class="archive-results-number">{{ posts_number }}
+    {% if posts_number == 1 %}
+        risultato
+    {% else %}
+        risultati
+    {% endif %}
+</p>
+{% endblock %}

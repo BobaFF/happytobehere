@@ -1,0 +1,22 @@
+{% import "components/macros.twig" as macros %}
+{% extends "base.twig" %}
+{% block page_title %}
+    Tutti i tag -
+{% endblock page_title %}
+{% block sticky_title %}
+    <h1 class="d-none d-xl-none">Tutti i tag</h1>
+{% endblock sticky_title %}
+{% block content %}
+    {% block title %}
+    <h2 class="general-title">Tutti i tag</h2>
+    {% endblock %}
+        {% for key, tags in ordinated_tags %}
+            <h3 class="tag-group-h">{{key}}</h3>
+            <ul class="tags d-inline-flex justify-content-start flex-wrap">
+                {% for tag in tags %}
+                    <li><a href="{{site.url}}/tag/{{tags_slug[tag]}}">{{tag}}</a></li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+{% endblock %}
+

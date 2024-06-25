@@ -1,0 +1,20 @@
+{% extends 'pages/archive.twig' %}
+{% import "components/macros.twig" as macros %}
+{% block archive_type %}category{% endblock archive_type %}
+{% block archive_value %}{{term.id}}{% endblock archive_value %}
+{% block sticky_title %}
+    <h1 class="d-none d-xl-none category-title">{{term.name}}</h1>
+{% endblock sticky_title %}
+{% block page_title %}
+    {{term.name}} - 
+{% endblock page_title %}
+
+{% block title %}
+<h2 class="category-title">{{term.name}}</h2>
+<p class="archive-results-number">{{posts_number}}
+    {% if posts_number == 1 %}
+        risultato {% else %} risultati
+    {% endif %}
+</p>
+{% endblock title %}
+{% block posts_list %}{{macros.posts_list(post, term.name)}}{% endblock posts_list %}

@@ -1,0 +1,17 @@
+{% extends 'pages/archive.twig' %}
+{% block archive_type %}author{% endblock archive_type %}
+{% block archive_value %}{{author.id}}{% endblock archive_value %}
+{% block sticky_title %}
+    <h1 class="d-none d-xl-none author">{{author.name}}</h1>
+{% endblock sticky_title %}
+{% block page_title %}
+    {{author.name}} - 
+{% endblock page_title %}
+{% block title %}
+<h2 class="author-title">Autore: {{ author.name }}</h2>
+<p class="archive-results-number">{{posts_number}}
+    {% if posts_number == 1 %}
+        risultato {% else %} risultati
+    {% endif %}
+</p>
+{% endblock title %}

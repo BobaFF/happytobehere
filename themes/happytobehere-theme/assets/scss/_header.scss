@@ -1,0 +1,397 @@
+//
+// Top Navigation
+//
+
+.header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 13;
+
+    .logo-cls-1 {
+        fill: $logo-bg;
+    }
+
+    #logo path {
+        fill: $logo-color;
+    }
+
+    &.fixed{
+        position: fixed;
+
+        #header-top {
+          display: none;
+        }
+    }
+
+  @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+    position: fixed;
+    width: 100%;
+  }
+
+  .search-toggler {
+    position: absolute;
+    height: $brand-height;
+    width: $brand-height;
+
+    @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+      &.desktop-search-button {
+        display: none;
+      }
+    }
+  }
+}
+
+#header-top {
+  padding: .7rem 20px;
+  border-bottom: $standard-border-value;
+  background-color: $secondary;
+  font-weight: 500;
+  height: $header-top-height;
+  position: relative;
+  z-index: 2;
+
+  @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+    font-weight: 300;
+    border-bottom: none;
+    @include py(.6rem);
+    height: $header-top-height-mobile;
+  }
+
+  * {
+    color: white;
+  }
+
+  .nav-item {
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a{
+      font-size: .8rem;
+      font-weight: 400;
+      color: white;
+
+      i{
+        margin-left: .3rem;
+        font-size: .9rem;
+      }
+    }
+  }
+}
+
+//
+// MAIN Menu
+//
+
+#menu {
+  position: relative;
+  z-index: 2;   // > 1 che è lo z-index dell'overlay del menù mobile
+  margin: 0;
+  padding: 0;
+  border-bottom: $menu-border-b-width solid $gray-300;
+
+  @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+    box-shadow: 0 .1rem .3rem 0 rgba(0,0,0,.1);
+    border-bottom: none;
+  }
+
+  .main-nav{
+    padding: 0;
+    background-color: $white;
+    z-index: 12;
+
+    transition: box-shadow .7s ease;
+
+    &.fixed{
+      position: fixed;
+      width: 100%;
+      border-bottom: 1px solid $gray-300;
+      box-shadow: 0 -.2rem .8rem 0 rgba(0,0,0,.1);
+    }
+
+    .nav-item {
+        cursor: pointer;
+        margin: 0;
+
+        .nav-main-link {
+          padding-top: 7px;
+          @include px(.9rem);
+          display: inline-block;
+
+          &[data-menu="faq-menu"] {
+            padding-top: 6px;
+          }
+        }
+    }
+  }
+
+  #header,
+  .brand{
+
+    a,
+    #default-header {
+      position: relative;
+      padding: 0;
+      z-index: 2;
+      height: 100%;
+
+      @include media-breakpoint-down(md){
+        margin-right: 0;
+      }
+
+      .site-name {
+        margin-left: $logo-text-ml;
+        font-weight: 500;
+        font-size: 1.5rem;
+
+        @include media-breakpoint-down($navbar-collapse-breakpoint-down) {
+          font-size: $font-size-md;
+          color: $body-color;
+          vertical-align: .1rem;
+          @include ml(4.2rem);
+        }
+        @media (max-width:#{$nav-xs-breakpoint}) {
+          display: none;
+        }
+      }
+
+      #logo {
+        width: $brand-height;
+        vertical-align: -17px;
+      }
+
+      .btn-search {
+        vertical-align: 6px;
+      }
+    }
+
+    // Only for 'Page Travel' Desktop CSS //
+
+    @include media-breakpoint-up($navbar-expand-breakpoint-up){   // TO DO: verificare se è corretto o se andava lasciato "md"
+      height: $brand-height;
+      overflow: hidden;
+
+      #default-header{
+        transform: translateY(0);
+        transition: transform .7s ease;
+      }
+    }
+
+      // TO DO: se effettivamente non viene più usato -> remove
+      /*#menu-short{
+        transform: translateY(0);
+        transition: transform .7s ease;
+        display: none;
+
+        .brand{
+          padding: 0;
+
+          .navbar-brand{
+
+            span{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-top: 2px;
+
+                @include media-breakpoint-down(xl){
+                    max-width: 500px;
+                }
+
+                @include media-breakpoint-between(xl,1280){
+                    max-width: 360px;
+                }
+
+                @include media-breakpoint-up(xxxl){
+                    max-width: inherit;
+                }
+            }
+          }
+        }
+      }*/
+
+      &.fixed{
+
+        #default-header{
+          // transform: translateY(-3.25rem);
+          transform: translateY(-97.5%);
+
+          @include media-breakpoint-down(sm){
+              transform: translateY(0);
+          }
+        }
+
+        // TO DO: se effettivamente non viene più usato -> remove
+        /*#menu-short{
+          // transform: translateY(-3.25rem);
+          transform: translateY(-97.5%);
+
+          @include media-breakpoint-down(sm){
+              transform: translateY(0);
+          }
+        }*/
+      }
+
+
+    // END Only for 'Page Travel' Desktop CSS //
+  }
+
+  .nav {
+    &.desktop-menu {
+      height: $brand-height;
+    }
+
+    .nav-item a {
+      font-weight: 500;
+
+      .how-it-works {
+        vertical-align: -5px;
+      }
+
+      &:hover {
+        .how-it-works {
+          .cls-1 {
+            fill: $gray-500;
+            stroke: $gray-500;
+            transition: .5s ease;
+            transition-property: fill, stroke;
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md){
+    border-top: none;
+  }
+
+  // MOBILE Controls //
+
+  #mobile-menu-controls {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    margin-top: 4px;
+    @include pr(1.25rem);
+
+    .favourite-link {
+      @include mr(1.25rem);
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      position: relative;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .7s ease, transform .7s ease;
+
+      &.hide {
+        opacity:0;
+        transform: translateY(-100%);
+      }
+
+      .counter {
+        color: #000;
+        font-size: $font-size-xxs;
+        font-weight: 500;
+        vertical-align: middle;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+
+    #menu-toggler,
+    .menu-opener{
+      background-color: $white;
+
+      transition: opacity .7s ease, transform 1.2s ease;
+    }
+
+    .reserved-area {
+      @include mr(3);
+    }
+
+    @media (max-width:#{$nav-xs-breakpoint}) {
+        @include pr(2.5vw);
+
+        .reserved-area {
+            @include mr(1vw);
+        }
+        .favourite-link {
+            @include mr(2vw);
+        }
+    }
+  }
+
+
+  // SEARCH MENU
+  .mobile-search-menu{
+    .sub-menu{
+      &:first-child{
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+// MOBILE MAIN MENU //
+
+.mobile-main-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  padding-top: 4.5rem;
+  background-color: $white;
+  overflow-y: scroll;
+  z-index: 12;
+
+  transform: translateY(-115%);
+  transition: transform .7s ease;
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  .nav {
+    flex-direction: column;
+
+    .nav-item {
+      margin: 0;
+
+      .nav-main-link {
+        text-transform: none;
+        border-top: $standard-border-value;
+        display: inline-block;
+        width: 100%;
+        @include py(1.25rem);
+        @include px(.75rem);
+        font-size: 1.12rem;
+        letter-spacing: .035rem;
+        cursor: pointer;
+      }
+
+      &:last-child {
+        .nav-main-link {
+          border-bottom: $standard-border-value;
+        }
+      }
+    }
+  }
+}
+
+// LINGUA
+
+.lang-en {
+  .site-name {
+    display: inline !important;
+  }
+  #menu .main-nav .nav-item .nav-main-link[data-menu="faq-menu"],
+  #menu .nav .nav-item a[data-menu="faq-menu"] {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "carosello-block/carosello-block",
+	"version": "1.0.0",
+	"title": "Carosello block",
+	"category": "widgets",
+	"description": "Il blocco del carosello viaggi di Girolibero. Inserisci i viaggi utilizzando i codweb.",
+	"example": {
+		"attributes": {
+			"codweb": ["IT367"]
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"codweb": {
+			"type": "array"
+		} 
+	},
+	"textdomain": "carosello-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"script": "file:./view.js"
+	
+}

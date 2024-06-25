@@ -1,0 +1,57 @@
+{% import "components/macros.twig" as macros %}
+{% extends "base.twig" %}
+{% block page_title %}
+	{{post.title}}
+	-
+{% endblock page_title %}
+{% block sticky_title %}
+    <h1 class="d-none d-xl-none"><a href="{{site.url}}">{{site.title}}</a></h1>
+{% endblock sticky_title %}
+{% block content %}
+	<div
+		class="row">
+		<article id="single-post" class="col-12 col-lg-8">
+					<header>
+						{% if post.thumbnail|length > 0%}
+							<img src="{{post.thumbnail}}">
+							<h1>{{post.title}}</h1>
+						{% else %}
+							<h1 class="mt-0">{{post.title}}</h1>
+						{% endif %}
+
+					</header>
+					<div>
+						{{ post.content }}
+					</div>
+					<footer>
+						
+						{% if post.terms('tag')%}
+							<ul class="tags d-inline-flex justify-content-start">
+								{% for tag in post.terms('tag') %}
+									<li>
+										<a href="{{site.url}}/tag/{{tag.slug}}">{{tag.title}}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</footer>
+				</article>
+				
+				<aside class="d-none d-lg-block col-12 col-lg-4">
+					<div>
+						<h4>tag</h4>
+						{{macros.tags_loop(tags, 10)}}
+						<a href="{{site.url}}/tutti-i-tag">vedi tutti</a>
+					</div>
+					<div>
+						<h4>Il blog in mappa</h4>
+						<a href="{{site.url}}/il-blog-in-mappa"><img id="map-img" src="{{site.url}}/wp-content/themes/happytobehere-theme/assets/img/map.png"></a>
+					</div>
+					<div>
+						<h4>i più popolari</h4>
+						{{macros.small_posts(most_viewed_posts, 3)}}
+						<a href="{{site.url}}/i-piu-popolari">vedi tutti</a>
+					</div>
+				</aside>
+	</div>
+{% endblock %}
