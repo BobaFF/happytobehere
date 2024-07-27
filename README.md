@@ -1,5 +1,5 @@
 # Happy to be here
-[Happytobehere](https://blog.girolibero.it/) è il blog ufficiale di [Girolibero](girolibero.it).\
+[Happytobehere](https://blog.girolibero.it/) è il blog ufficiale di [Girolibero](girolibero.it).
 
 Il blog, gestito tramite il CMS WordPress, è stato aggiornato durante il periodo di stage in azienda, che ho svolto nel secondo semestre del terzo anno di studi.
 
